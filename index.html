@@ -10,7 +10,6 @@
 
   <style>
     :root {
-      /* [Color Theme] 신뢰의 네이비 + 포인트 블루/옐로우 */
       --primary: #0f172a;
       --accent: #2563eb;
       --yellow: #facc15; 
@@ -34,7 +33,6 @@
     .bg-white { background: var(--white); }
     .text-center { text-align: center; }
 
-    /* Header */
     header {
       position: sticky; top: 0; z-index: 1000;
       background: rgba(255, 255, 255, 0.95);
@@ -52,23 +50,18 @@
     }
     .lang-btn.active { background: var(--white); color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-    /* HERO Section */
     .hero {
-      display: flex; align-items: center; gap: 50px; padding: 100px 0; min-height: 85vh;
+      display: flex; align-items: center; gap: 50px; padding: 100px 0 50px; min-height: 75vh;
     }
     .hero-text { flex: 1.2; }
-    .hero-badge {
-      display: inline-block; background: var(--white); border: 1px solid #e2e8f0; color: var(--primary);
-      padding: 8px 16px; border-radius: 30px; font-size: 14px; font-weight: 800; margin-bottom: 25px;
-    }
     .hero h1 {
       font-size: 52px; line-height: 1.2; margin-bottom: 25px; letter-spacing: -1px; word-break: keep-all; color: var(--primary);
     }
     .hero p {
-      font-size: 19px; color: var(--text-gray); margin-bottom: 40px; word-break: keep-all;
+      font-size: 19px; color: var(--text-gray); margin-bottom: 28px; word-break: keep-all;
     }
-    
-    .stats-row { display: flex; gap: 20px; margin-top: 40px; }
+
+    .stats-row { display: flex; gap: 20px; margin-top: 10px; }
     .stat-box {
       background: var(--white); padding: 20px; border-radius: 16px;
       box-shadow: var(--shadow); flex: 1; text-align: center;
@@ -76,14 +69,49 @@
     .stat-num { font-size: 28px; font-weight: 900; color: var(--primary); margin-bottom: 5px;}
     .stat-label { font-size: 14px; color: var(--text-gray); font-weight: 600; }
 
-    /* Image Box */
     .hero-img-box { flex: 1; position: relative; }
     .hero-img-box img {
       border-radius: 24px; box-shadow: 20px 20px 0 #dfe7ef;
       aspect-ratio: 3/4;
     }
 
-    /* Portfolio Cards */
+    /* ✅ NEW: Proof Strip */
+    .proof-strip {
+      margin: 0 auto 60px;
+      max-width: 1100px;
+      padding: 0 20px;
+    }
+    .proof-wrap {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid #eef2f7;
+    }
+    .proof-ico {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #eff6ff;
+      color: var(--accent);
+      font-size: 18px;
+      flex: 0 0 auto;
+    }
+    .proof-k { font-size: 12px; color: var(--text-gray); font-weight: 700; }
+    .proof-v { font-size: 16px; font-weight: 900; color: var(--primary); margin-top: 1px; }
+
     .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
     .pf-card {
       background: var(--white); border-radius: 20px; overflow: hidden;
@@ -98,7 +126,6 @@
     .pf-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
     .pf-text { font-size: 15px; color: var(--text-gray); word-break: keep-all;}
 
-    /* Daily Life */
     .daily-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
       grid-auto-rows: 200px;
@@ -109,7 +136,26 @@
     .daily-item.large { grid-column: span 2; grid-row: span 2; }
     .daily-item.wide { grid-column: span 2; }
 
-    /* New Contact Section (Clean Style) */
+    /* ✅ NEW: Photo caption chips */
+    .cap {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(226,232,240,0.9);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      backdrop-filter: blur(8px);
+    }
+    .cap i { color: var(--accent); font-size: 15px; }
+
     .contact-container {
       display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
       background: var(--white); border-radius: 24px; padding: 50px;
@@ -145,7 +191,6 @@
     }
     .pdf-btn:hover { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
 
-    /* Responsive */
     @media (max-width: 900px) {
       .hero { flex-direction: column-reverse; text-align: center; padding-top: 50px; gap: 30px; }
       .hero h1 { font-size: 38px; }
@@ -153,6 +198,7 @@
       .contact-container { grid-template-columns: 1fr; padding: 30px; }
       .nav-menu { display: none; }
       .daily-grid { grid-template-columns: 2fr 2fr; }
+      .proof-wrap { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -163,7 +209,7 @@
       <div class="logo">JANG HYE RIN</div>
       <nav class="nav-menu">
         <a href="#portfolio" data-kr="포트폴리오">포트폴리오</a>
-        <a href="#daily" data-kr="라이프스타일">라이프스타일</a>
+        <a href="#daily" data-kr="사진">사진</a>
         <a href="#contact" data-kr="연락처">연락처</a>
       </nav>
       <div class="lang-switch">
@@ -191,16 +237,16 @@
 
       <div class="stats-row">
         <div class="stat-box">
-          <div class="stat-num">300%</div>
-          <div class="stat-label" data-kr="현장 완판율" data-en="Sell-out Rate" data-cn="现场售罄率">현장 완판율</div>
+          <div class="stat-num">200만+</div>
+          <div class="stat-label" data-kr="베이비페어 1일 매출" data-en="1-day Fair Sales" data-cn="展会单日销售额">베이비페어 1일 매출</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num">5.4K+</div>
-          <div class="stat-label" data-kr="글로벌 구독자" data-en="Subscribers" data-cn="全球订阅者">글로벌 구독자</div>
+          <div class="stat-num">5.4K</div>
+          <div class="stat-label" data-kr="유튜브 구독자" data-en="YouTube Subscribers" data-cn="订阅者">유튜브 구독자</div>
         </div>
         <div class="stat-box">
           <div class="stat-num" style="font-size:24px;">All-in-One</div>
-          <div class="stat-label" data-kr="올인원 능력" data-en="Versatility" data-cn="全能能力">올인원 능력</div>
+          <div class="stat-label" data-kr="콘텐츠·진행·세일즈" data-en="Content / Hosting / Sales" data-cn="内容 / 主持 / 销售">콘텐츠·진행·세일즈</div>
         </div>
       </div>
     </div>
@@ -210,11 +256,60 @@
     </div>
   </section>
 
+  <!-- ✅ NEW: Proof Strip (증거 바) -->
+  <section class="proof-strip" aria-label="Proof strip">
+    <div class="proof-wrap">
+      <div class="proof-item">
+        <div class="proof-ico"><i class="ri-calendar-check-line"></i></div>
+        <div>
+          <div class="proof-k" data-kr="채널 개설" data-en="Channel Opened" data-cn="频道创建">채널 개설</div>
+          <div class="proof-v">2022.02.27</div>
+        </div>
+      </div>
+
+      <div class="proof-item">
+        <div class="proof-ico"><i class="ri-user-follow-line"></i></div>
+        <div>
+          <div class="proof-k" data-kr="구독자" data-en="Subscribers" data-cn="订阅">구독자</div>
+          <div class="proof-v">5.4K</div>
+        </div>
+      </div>
+
+      <div class="proof-item">
+        <div class="proof-ico"><i class="ri-video-line"></i></div>
+        <div>
+          <div class="proof-k" data-kr="업로드" data-en="Videos" data-cn="视频">업로드</div>
+          <div class="proof-v">98</div>
+        </div>
+      </div>
+
+      <div class="proof-item">
+        <div class="proof-ico"><i class="ri-line-chart-line"></i></div>
+        <div>
+          <div class="proof-k" data-kr="누적 조회수" data-en="Total Views" data-cn="总播放量">누적 조회수</div>
+          <div class="proof-v">567,024</div>
+        </div>
+      </div>
+
+      <div class="proof-item">
+        <div class="proof-ico"><i class="ri-shopping-bag-3-line"></i></div>
+        <div>
+          <div class="proof-k" data-kr="현장 성과" data-en="On-site Result" data-cn="现场成果">현장 성과</div>
+          <div class="proof-v" data-kr="1일 200만+" data-en="₩2M+/day" data-cn="单日200万+">1일 200만+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="portfolio" class="section bg-white">
     <div class="container">
       <div class="text-center">
-        <h2 style="font-size:32px; font-weight:900; margin-bottom:10px;" data-kr="Featured Works" data-en="Featured Works" data-cn="精选作品">Featured Works</h2>
-        <p style="color:var(--text-gray);" data-kr="기록이 아닌, 숫자로 증명되는 결과입니다." data-en="Results proven by numbers." data-cn="用数字证明的结果。">기록이 아닌, 숫자로 증명되는 결과입니다.</p>
+        <h2 style="font-size:32px; font-weight:900; margin-bottom:10px;"
+            data-kr="Featured Works" data-en="Featured Works" data-cn="精选作品">Featured Works</h2>
+        <p style="color:var(--text-gray);"
+           data-kr="기록이 아닌, 숫자로 증명되는 결과입니다."
+           data-en="Results proven by numbers."
+           data-cn="用数字证明的结果。">기록이 아닌, 숫자로 증명되는 결과입니다.</p>
       </div>
 
       <div class="pf-grid">
@@ -223,19 +318,26 @@
           <div class="pf-body">
             <span class="pf-cat">Live Commerce</span>
             <div class="pf-title" data-kr="라이브 소통 전문" data-en="Live Interaction" data-cn="直播互动">라이브 소통 전문</div>
-            <div class="pf-text" data-kr="대본에 없는 돌발 질문도 세일즈 포인트로 연결. 고객과 티키타카가 가능한 실시간 소통 역량." data-en="Turning unexpected questions into sales points. Real-time interaction capability." data-cn="将突发提问转化为销售点。具备实时互动的沟通能力。">
-              대본에 없는 돌발 질문도 세일즈 포인트로 연결. 고객과 티키타카가 가능한 실시간 소통 역량.
+            <div class="pf-text"
+                 data-kr="실시간 질문을 핵심 포인트로 정리해, 구매 망설임을 줄이는 진행."
+                 data-en="Hosting that turns live questions into clear buying points."
+                 data-cn="把实时提问整理成明确卖点，减少犹豫。">
+              실시간 질문을 핵심 포인트로 정리해, 구매 망설임을 줄이는 진행.
             </div>
           </div>
         </div>
 
+        <!-- ✅ UPDATED: 브랜드명 없이 '증거형 3줄' -->
         <div class="pf-card">
-          <div class="pf-thumb"><img src="sales_photo.jpg" alt="Sales" onerror="this.src='https://via.placeholder.com/400x300'"></div>
+          <div class="pf-thumb"><img src="sales_photo.jpg" alt="On-site Sales" onerror="this.src='https://via.placeholder.com/400x300'"></div>
           <div class="pf-body">
-            <span class="pf-cat">Field Sales</span>
-            <div class="pf-title" data-kr="오프라인 페어 완판" data-en="Fair Sell-out" data-cn="线下展会售罄">오프라인 페어 완판</div>
-            <div class="pf-text" data-kr="지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 준비된 현장 재고 전량 소진 달성." data-en="Hooking comments stopping passersby in 3s. Achieved total stock sell-out." data-cn="3秒留住过路客的钩子话术。达成库存全部售罄。">
-              지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 준비된 현장 재고 전량 소진 달성.
+            <span class="pf-cat">On-site Sales</span>
+            <div class="pf-title" data-kr="베이비페어 팝업 세일즈" data-en="Baby Fair Pop-up Sales" data-cn="母婴展快闪销售">베이비페어 팝업 세일즈</div>
+            <div class="pf-text"
+                 data-kr="유아 완구 팝업 부스에서 응대·시연 중심 판매 운영. <br><b>1일 매출 200만+</b> 달성. <br>현장 질문 TOP3 기반 멘트/시연 루틴 정리."
+                 data-en="Operated sales with demo-first approach at a baby-toy pop-up. <br><b>₩2M+ in one day</b>. <br>Built repeatable talk & demo routines based on top FAQs."
+                 data-cn="母婴玩具快闪展位，以接待+演示为主进行销售。<br><b>单日销售额200万+</b>。<br>基于高频提问整理话术与演示流程。">
+              유아 완구 팝업 부스에서 응대·시연 중심 판매 운영. <br><b>1일 매출 200만+</b> 달성. <br>현장 질문 TOP3 기반 멘트/시연 루틴 정리.
             </div>
           </div>
         </div>
@@ -243,10 +345,13 @@
         <div class="pf-card">
           <div class="pf-thumb"><img src="youtube_photo.jpg" alt="Content" onerror="this.src='https://via.placeholder.com/400x300'"></div>
           <div class="pf-body">
-            <span class="pf-cat">Global Planning</span>
-            <div class="pf-title" data-kr="글로벌 타깃 기획력" data-en="Global Planning" data-cn="全球策划力">글로벌 타깃 기획력</div>
-            <div class="pf-text" data-kr="구독자 80%가 외국인. 언어 장벽을 넘는 비언어적 소통과 데이터 기반 콘텐츠 기획." data-en="80% foreign subscribers. Data-driven content planning beyond language barriers." data-cn="80%订阅者为外国人。超越语言障碍的非语言沟通与基于数据的策划。">
-              구독자 80%가 외국인. 언어 장벽을 넘는 비언어적 소통과 데이터 기반 콘텐츠 기획.
+            <span class="pf-cat">Content</span>
+            <div class="pf-title" data-kr="콘텐츠 기획·제작" data-en="Content Planning" data-cn="内容策划">콘텐츠 기획·제작</div>
+            <div class="pf-text"
+                 data-kr="98편 제작/운영. 여행·현장 기반 스토리텔링으로 누적 조회수 56만+."
+                 data-en="98 videos produced. 560K+ total views with field-based storytelling."
+                 data-cn="制作并运营98支视频，总播放量56万+。">
+              98편 제작/운영. 여행·현장 기반 스토리텔링으로 누적 조회수 56만+.
             </div>
           </div>
         </div>
@@ -254,19 +359,50 @@
     </div>
   </section>
 
+  <!-- ✅ UPDATED: Lifestyle -> On-site & Presence + 캡션 -->
   <section id="daily" class="section">
     <div class="container">
       <div class="text-center" style="margin-bottom:40px;">
-        <h2 style="font-size:32px; font-weight:900; margin-bottom:10px;" data-kr="Lifestyle & Vibe" data-en="Lifestyle & Vibe" data-cn="生活方式">Lifestyle & Vibe</h2>
-        <p style="color:var(--text-gray);" data-kr="신뢰감 있는 진행부터 친근한 일상까지" data-en="Professional yet friendly." data-cn="从值得信赖到亲切日常。">신뢰감 있는 진행부터 친근한 일상까지</p>
+        <h2 style="font-size:32px; font-weight:900; margin-bottom:10px;"
+            data-kr="On-site & Presence" data-en="On-site & Presence" data-cn="现场感与表现力">On-site & Presence</h2>
+        <p style="color:var(--text-gray);"
+           data-kr="역할에 맞게 분위기와 톤을 조절하는 ‘현장형 이미지’"
+           data-en="Brand-ready visuals with role-based tone control."
+           data-cn="根据角色调整氛围与语气的现场型形象。">
+          역할에 맞게 분위기와 톤을 조절하는 ‘현장형 이미지’
+        </p>
       </div>
+
       <div class="daily-grid">
-        <div class="daily-item large"><img src="hanbok.jpg" alt="한복" onerror="this.src='https://via.placeholder.com/400x400'"></div>
-        <div class="daily-item"><img src="travel.jpg" alt="여행" onerror="this.src='https://via.placeholder.com/200x200'"></div>
-        <div class="daily-item"><img src="food.jpg" alt="음식" onerror="this.src='https://via.placeholder.com/200x200'"></div>
-        <div class="daily-item wide"><img src="casual.jpg" alt="캐주얼" onerror="this.src='https://via.placeholder.com/400x200'"></div>
-        <div class="daily-item"><img src="smile.jpg" alt="미소" onerror="this.src='https://via.placeholder.com/200x200'"></div>
-        <div class="daily-item"><img src="work.jpg" alt="작업" onerror="this.src='https://via.placeholder.com/200x200'"></div>
+        <div class="daily-item large">
+          <img src="hanbok.jpg" alt="신뢰형(진행/MC)" onerror="this.src='https://via.placeholder.com/400x400'">
+          <div class="cap"><i class="ri-mic-line"></i><span data-kr="신뢰형(진행/MC)" data-en="Trust (Host/MC)" data-cn="可信型（主持/MC）">신뢰형(진행/MC)</span></div>
+        </div>
+
+        <div class="daily-item">
+          <img src="travel.jpg" alt="글로벌형(현장/여행)" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="cap"><i class="ri-earth-line"></i><span data-kr="글로벌형(현장/여행)" data-en="Global (Field/Travel)" data-cn="全球型（现场/旅行）">글로벌형(현장/여행)</span></div>
+        </div>
+
+        <div class="daily-item">
+          <img src="food.jpg" alt="응대형(상담/응대)" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="cap"><i class="ri-chat-3-line"></i><span data-kr="응대형(상담/응대)" data-en="Service (Consulting)" data-cn="接待型（咨询/应对）">응대형(상담/응대)</span></div>
+        </div>
+
+        <div class="daily-item wide">
+          <img src="casual.jpg" alt="프리미엄형(브랜드 무드)" onerror="this.src='https://via.placeholder.com/400x200'">
+          <div class="cap"><i class="ri-vip-crown-line"></i><span data-kr="프리미엄형(브랜드 무드)" data-en="Premium (Brand Mood)" data-cn="高级感（品牌氛围）">프리미엄형(브랜드 무드)</span></div>
+        </div>
+
+        <div class="daily-item">
+          <img src="smile.jpg" alt="응대형(상담/응대)" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="cap"><i class="ri-hand-heart-line"></i><span data-kr="응대형(상담/응대)" data-en="Service (Consulting)" data-cn="接待型（咨询/应对）">응대형(상담/응대)</span></div>
+        </div>
+
+        <div class="daily-item">
+          <img src="work.jpg" alt="신뢰형(진행/MC)" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="cap"><i class="ri-briefcase-3-line"></i><span data-kr="신뢰형(진행/MC)" data-en="Trust (Host/MC)" data-cn="可信型（主持/MC）">신뢰형(진행/MC)</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -275,18 +411,18 @@
     <div class="container">
       <div class="text-center">
         <h2 style="font-size:36px; font-weight:900; color:var(--primary);" data-kr="Ready to Sell?" data-en="Ready to Sell?" data-cn="准备好大卖了吗？">Ready to Sell?</h2>
-        <p style="color:var(--text-gray); margin-top:10px;" data-kr="귀사의 매출을 책임질 목소리, 지금 바로 제안하세요." data-en="The voice that drives your sales. Propose now." data-cn="负责贵公司销售的声音，立即提案。">
-          귀사의 매출을 책임질 목소리, 지금 바로 제안하세요.
+        <p style="color:var(--text-gray); margin-top:10px;" data-kr="채용·프로젝트·콜라보 문의는 아래로 바로 연결됩니다." data-en="Hiring / Projects / Collabs — contact below." data-cn="招聘/项目/合作 请在下方联系。">
+          채용·프로젝트·콜라보 문의는 아래로 바로 연결됩니다.
         </p>
       </div>
 
       <div class="contact-container">
         <div class="contact-left">
           <h3 data-kr="오픈카톡이 가장 빠릅니다" data-en="Open Kakao is Fastest" data-cn="Open Kakao 最快">오픈카톡이 가장 빠릅니다</h3>
-          <p data-kr="채용, 프로젝트, 콜라보 등 어떤 문의든 편하게 주세요." data-en="Feel free to contact me for hiring or collab." data-cn="招聘、项目、合作等请随时咨询。">채용, 프로젝트, 콜라보 등 어떤 문의든 편하게 주세요.</p>
+          <p data-kr="간단히 목적만 남겨주시면 제가 먼저 제안드릴게요." data-en="Leave your goal — I’ll propose the next step." data-cn="留下目标即可，我来给出下一步建议。">간단히 목적만 남겨주시면 제가 먼저 제안드릴게요.</p>
           
           <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="kakao-btn">
-            <i class="ri-kakao-talk-fill"></i> <span>1:1 채팅 바로가기</span>
+            <i class="ri-kakao-talk-fill"></i> <span data-kr="1:1 채팅 바로가기" data-en="Open 1:1 Chat" data-cn="进入1:1聊天">1:1 채팅 바로가기</span>
           </a>
 
           <div class="pdf-btn" onclick="alert('PDF 준비중입니다.')">
@@ -304,21 +440,21 @@
             <div class="ch-info">
               <i class="ri-youtube-fill" style="color:#ff0000; font-size:24px;"></i> YouTube
             </div>
-            <span class="ch-desc" data-kr="글로벌 브이로그 & 기획" data-en="Global Vlogs" data-cn="全球 Vlog">글로벌 브이로그 & 기획</span>
+            <span class="ch-desc" data-kr="브이로그 & 기획" data-en="Vlogs & Planning" data-cn="Vlog与策划">브이로그 & 기획</span>
           </a>
           
           <a href="https://instagram.com/livelyrin" target="_blank" class="channel-link">
             <div class="ch-info">
               <i class="ri-instagram-fill" style="color:#bc1888; font-size:24px;"></i> Instagram
             </div>
-            <span class="ch-desc" data-kr="일상 & 사진 포트폴리오" data-en="Daily & Portfolio" data-cn="日常与作品集">일상 & 사진 포트폴리오</span>
+            <span class="ch-desc" data-kr="사진 포트폴리오" data-en="Photo Portfolio" data-cn="照片作品集">사진 포트폴리오</span>
           </a>
 
           <a href="#" class="channel-link">
             <div class="ch-info">
               <i class="ri-pencil-fill" style="color:#00C73C; font-size:24px;"></i> Blog
             </div>
-            <span class="ch-desc" data-kr="제품 리뷰 & 정보 아카이빙" data-en="Reviews & Info" data-cn="评论与信息">제품 리뷰 & 정보 아카이빙</span>
+            <span class="ch-desc" data-kr="리뷰 & 아카이빙" data-en="Reviews & Archive" data-cn="评测与归档">리뷰 & 아카이빙</span>
           </a>
         </div>
       </div>
