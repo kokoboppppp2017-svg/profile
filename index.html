@@ -197,7 +197,7 @@
       .floating-contact{display:inline-flex;}
     }
 
-    /* Mobile fine-tuning (fix "too big" issue) */
+    /* Mobile fine-tuning */
     @media (max-width: 600px){
       header{padding:10px 0;}
       .logo{font-size:18px;}
@@ -215,7 +215,7 @@
       .section{padding:70px 0;}
       .pf-thumb{height:190px;}
       .pf-title{font-size:18px;}
-      .pf-text{font-size:14px;}
+      .pf-text{font-size:13.5px;line-height:1.55;}
     }
   </style>
 </head>
@@ -277,12 +277,12 @@
         </div>
 
         <div class="stat-box">
-          <div class="stat-num">5.4K+</div>
+          <div class="stat-num">1,000만+</div>
           <div class="stat-label"
-               data-kr="유튜브 구독자"
-               data-en="YouTube Subscribers"
-               data-cn="YouTube 订阅者">
-            유튜브 구독자
+               data-kr="팝업 누적 매출"
+               data-en="Popup Total Sales"
+               data-cn="快闪 累计销售额">
+            팝업 누적 매출
           </div>
         </div>
 
@@ -298,7 +298,6 @@
       </div>
     </div>
 
-    <!-- Optional: keep profile image (if you have one). If not, still ok -->
     <div class="hero-img-box">
       <img src="main_profile.jpg" alt="장혜린 프로필" onerror="this.src='https://via.placeholder.com/500x700'">
     </div>
@@ -319,7 +318,7 @@
 
       <div class="pf-grid">
 
-        <!-- Baby Fair -->
+        <!-- Baby Fair (Baby cosmetics) -->
         <div class="pf-card">
           <div class="pf-thumb" aria-hidden="true">
             <div class="pf-icon"><i class="ri-store-2-line"></i></div>
@@ -333,15 +332,15 @@
               베이비페어 현장판매
             </div>
             <div class="pf-text"
-                 data-kr="유아 장난감 부스 운영. 시연→FAQ 응대→결제까지 현장 흐름을 빠르게 완성해 1일 200만+ 판매."
-                 data-en="Operated a baby-toy booth. Demo → key FAQs → checkout flow, achieving 2M+ KRW in a day."
-                 data-cn="运营婴幼儿玩具展位。演示→核心FAQ答疑→成交，单日销售200万+韩元。">
-              유아 장난감 부스 운영. 시연→FAQ 응대→결제까지 현장 흐름을 빠르게 완성해 1일 200만+ 판매.
+                 data-kr="유아 화장품 부스 운영 · 1일 매출 200만+"
+                 data-en="Baby cosmetics booth · 2M+ KRW in a day"
+                 data-cn="婴幼儿护肤品展位 · 单日销售200万+韩元">
+              유아 화장품 부스 운영 · 1일 매출 200만+
             </div>
           </div>
         </div>
 
-        <!-- Popup -->
+        <!-- Popup (sensory play) -->
         <div class="pf-card">
           <div class="pf-thumb" aria-hidden="true">
             <div class="pf-icon"><i class="ri-ticket-2-line"></i></div>
@@ -355,15 +354,15 @@
               팝업 현장 응대
             </div>
             <div class="pf-text"
-                 data-kr="짧은 체류 시간의 고객을 ‘한 문장 설명→짧은 시연→구매 포인트 정리’로 연결해 현장 전환을 만들었습니다."
-                 data-en="Converted short-stay visitors with a tight flow: one-line pitch → quick demo → purchase point summary."
-                 data-cn="用紧凑流程提升转化：一句话说明→快速演示→总结购买理由。">
-              짧은 체류 시간의 고객을 ‘한 문장 설명→짧은 시연→구매 포인트 정리’로 연결해 현장 전환을 만들었습니다.
+                 data-kr="유아 오감놀이 제품 · 누적 매출 1,000만+"
+                 data-en="Kids sensory play product · 10M+ KRW total"
+                 data-cn="幼儿感官玩具/体验产品 · 累计1000万+韩元">
+              유아 오감놀이 제품 · 누적 매출 1,000만+
             </div>
           </div>
         </div>
 
-        <!-- Global Planning (YouTube) -->
+        <!-- Global Planning -->
         <div class="pf-card">
           <div class="pf-thumb" aria-hidden="true">
             <div class="pf-icon"><i class="ri-global-line"></i></div>
@@ -377,10 +376,10 @@
               글로벌 타깃 기획
             </div>
             <div class="pf-text"
-                 data-kr="여행 중심 채널 운영. 다국어 자막·구성 최적화로 해외 시청자 유입을 꾸준히 만들고 있습니다."
-                 data-en="Runs a travel-focused channel. Maintains steady global reach with multilingual captions and structure optimization."
-                 data-cn="运营旅行类频道。通过多语言字幕与结构优化，持续获得海外流量。">
-              여행 중심 채널 운영. 다국어 자막·구성 최적화로 해외 시청자 유입을 꾸준히 만들고 있습니다.
+                 data-kr="다국어 자막·구성 최적화 경험"
+                 data-en="Multilingual captions & structure optimization"
+                 data-cn="多语言字幕与结构优化经验">
+              다국어 자막·구성 최적화 경험
             </div>
           </div>
         </div>
@@ -389,7 +388,7 @@
     </div>
   </section>
 
-  <!-- PRESENCE (no captions/labels on images) -->
+  <!-- PRESENCE -->
   <section id="presence" class="section">
     <div class="container">
       <div class="text-center">
@@ -400,15 +399,14 @@
           On-site & Presence
         </h2>
         <p class="section-sub"
-           data-kr="사진은 ‘무드’만 보여주고, 설득은 위의 성과 카드로 합니다."
-           data-en="Photos show vibe. Proof comes from the result cards above."
-           data-cn="照片展示氛围，证明来自上面的成果卡片。">
-          사진은 ‘무드’만 보여주고, 설득은 위의 성과 카드로 합니다.
+           data-kr="사진은 ‘무드’만 보여줍니다."
+           data-en="Photos show vibe."
+           data-cn="照片只展示氛围。">
+          사진은 ‘무드’만 보여줍니다.
         </p>
       </div>
 
       <div class="daily-grid">
-        <!-- Replace these src with your real images. No text overlays. -->
         <div class="daily-item large"><img src="presence_1.jpg" alt="presence 1" onerror="this.src='https://via.placeholder.com/600x600'"></div>
         <div class="daily-item"><img src="presence_2.jpg" alt="presence 2" onerror="this.src='https://via.placeholder.com/300x300'"></div>
         <div class="daily-item"><img src="presence_3.jpg" alt="presence 3" onerror="this.src='https://via.placeholder.com/300x300'"></div>
@@ -424,10 +422,10 @@
     <div class="container">
       <div class="text-center">
         <h2 style="font-size:36px;font-weight:900;color:var(--primary);"
-            data-kr="Ready to Sell?"
-            data-en="Ready to Sell?"
-            data-cn="准备好大卖了吗？">
-          Ready to Sell?
+            data-kr="Ready to Decide?"
+            data-en="Ready to Decide?"
+            data-cn="准备好做决定了吗？">
+          Ready to Decide?
         </h2>
         <p style="color:var(--text-gray);margin-top:10px;"
            data-kr="프로젝트/채용/콜라보 문의는 아래로 바로 주세요."
@@ -472,10 +470,10 @@
               <i class="ri-youtube-fill" style="color:#ff0000;font-size:24px;"></i> YouTube
             </div>
             <span class="ch-desc"
-                  data-kr="브이로그 & 기획"
-                  data-en="Vlogs & Planning"
-                  data-cn="Vlog与策划">
-              브이로그 & 기획
+                  data-kr="콘텐츠 & 기획"
+                  data-en="Content & Planning"
+                  data-cn="内容与策划">
+              콘텐츠 & 기획
             </span>
           </a>
 
