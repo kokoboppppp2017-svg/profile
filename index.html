@@ -3,385 +3,978 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>장혜린 | 쇼호스트 & 콘텐츠 디렉터</title>
-  
+  <title>Dotorin | Portfolio</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
   <style>
-    :root {
-      /* [Color Theme] 신뢰의 네이비 + 포인트 옐로우/블루 */
-      --primary: #1e293b;    /* 짙은 네이비 (본문/제목) */
-      --accent: #2563eb;     /* 비즈니스 블루 (버튼/강조) */
-      --highlight: #facc15;  /* 하이라이트 옐로우 (중요 포인트) */
-      --bg-gray: #f8fafc;    /* 배경 회색 */
-      --white: #ffffff;
-      --text-gray: #64748b;
+    :root{
+      /* Soft Sky + Slate + Warm Sand */
+      --bg: #f6f7fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --sub:#64748b;
+      --line:#e5e7eb;
+
+      --accent:#3b82f6;         /* soft sky */
+      --accent2:#0ea5e9;        /* optional */
+      --sand:#f8fafc;           /* warm-ish offwhite */
+      --shadow: 0 16px 50px rgba(15,23,42,.08);
+      --radius: 22px;
+
+      --ok:#16a34a;
+      --warn:#f59e0b;
+      --danger:#ef4444;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; } /* 스무스 스크롤 핵심 */
-    
-    body {
-      font-family: "Pretendard", sans-serif;
-      color: var(--primary);
-      line-height: 1.6;
-      background: var(--white);
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:20px}
+    .muted{color:var(--sub)}
+    .sr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:950; letter-spacing:-.01em;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;background:var(--accent);
+      box-shadow:0 0 0 6px rgba(59,130,246,.14);
+    }
+    .navlinks{
+      display:flex;gap:18px;align-items:center;
+      list-style:none;margin:0;padding:0;
+      color:var(--sub);font-weight:800;
+      flex-wrap:wrap;justify-content:center;
+    }
+    .navlinks a{padding:10px 10px;border-radius:12px}
+    .navlinks a:hover{background:#f1f5f9;color:var(--text)}
+    .lang{
+      display:flex;gap:8px;align-items:center;
+      background:#fff;border:1px solid var(--line);
+      padding:6px;border-radius:999px;
+    }
+    .lang button{
+      border:0;background:transparent;cursor:pointer;
+      padding:8px 12px;border-radius:999px;
+      font-weight:900;color:var(--sub);
+    }
+    .lang button.active{background:var(--accent);color:#fff}
+
+    /* Sections */
+    section{margin:64px 0}
+    h1{
+      font-size:44px;line-height:1.1;margin:12px 0 14px;
+      letter-spacing:-.03em;
+    }
+    h2{font-size:28px;margin:0 0 14px;letter-spacing:-.02em}
+    .section-sub{margin:0 0 18px;color:var(--sub);line-height:1.65}
+
+    /* Cards & buttons */
+    .card{
+      background:var(--card);
+      border:1px solid rgba(229,231,235,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 16px;border-radius:14px;
+      font-weight:950;cursor:pointer;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 12px 30px rgba(15,23,42,.06);
+      transition:.15s transform ease, .15s opacity ease;
+      user-select:none;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:transparent}
+    .btn.ghost{background:transparent;box-shadow:none}
+    .btn.small{padding:10px 12px;border-radius:12px;font-weight:900}
+    .btn.kakao{background:#FEE500;color:#111827;border-color:transparent}
+    .btn.kakao:hover{opacity:.92}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:24px;
+      align-items:start;
+    }
+    .badgeRow{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:13px;font-weight:900;color:#334155;
+      background:#fff;border:1px solid var(--line);
+      padding:8px 12px;border-radius:999px;
+      box-shadow:0 8px 22px rgba(15,23,42,.05);
+    }
+    .heroLead{font-size:18px;line-height:1.65;color:var(--sub);margin:0 0 18px}
+    .heroActions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+    .miniNote{
+      margin-top:14px;
+      padding:14px 16px;border-radius:14px;
+      background:#fff7ed;border:1px solid #fed7aa;color:#92400e;
+      font-size:14px;line-height:1.55;
+      display:none;
     }
 
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-    img { display: block; width: 100%; height: auto; object-fit: cover; }
-
-    /* --- Header & Nav --- */
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid #e2e8f0;
-      backdrop-filter: blur(10px);
+    /* Right hero profile card */
+    .profileTop{
+      display:flex;gap:16px;align-items:flex-start;
     }
-    .nav-container {
-      max-width: 1200px; margin: 0 auto; padding: 0 20px;
-      height: 70px; display: flex; align-items: center; justify-content: space-between;
+    .avatar{
+      width:110px;aspect-ratio:3/4;border-radius:16px;
+      background:#e5e7eb;border:1px solid var(--line);
+      overflow:hidden;flex:0 0 auto;
+      display:flex;align-items:center;justify-content:center;
+      color:#94a3b8;font-weight:950;
     }
-    .logo { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
-    .nav-links { display: flex; gap: 24px; font-weight: 600; font-size: 15px; }
-    .nav-links a:hover { color: var(--accent); }
-    
-    /* Language Switcher */
-    .lang-switch { display: flex; gap: 5px; background: #f1f5f9; padding: 4px; border-radius: 20px; }
-    .lang-btn {
-      border: none; background: none; padding: 4px 12px;
-      font-size: 12px; font-weight: 800; border-radius: 16px; cursor: pointer; color: var(--text-gray);
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .label{
+      font-size:12px;font-weight:950;letter-spacing:.10em;
+      color:var(--accent);
     }
-    .lang-btn.active { background: var(--white); color: var(--accent); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-
-    /* --- Layout Utilities --- */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    .section { padding: 80px 0; }
-    .bg-gray { background: var(--bg-gray); }
-    .text-center { text-align: center; }
-    
-    /* --- HERO Section --- */
-    .hero {
-      padding: 120px 0 100px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-block; background: #eff6ff; color: var(--accent);
-      padding: 6px 16px; border-radius: 30px; font-size: 14px; font-weight: 800; margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: 52px; line-height: 1.2; letter-spacing: -1px; margin-bottom: 24px; word-break: keep-all;
-    }
-    .hero p {
-      font-size: 18px; color: var(--text-gray); max-width: 600px; margin: 0 auto 40px; word-break: keep-all;
-    }
-    .hero-btns { display: flex; gap: 12px; justify-content: center; }
-    .btn {
-      padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 16px;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
-    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
-    .btn-outline { border: 1px solid #cbd5e1; background: white; color: var(--primary); }
-    .btn-outline:hover { background: #f8fafc; border-color: var(--primary); }
-
-    /* --- Stats / Proof --- */
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      max-width: 800px; margin: 60px auto 0;
-    }
-    .stat-card {
-      background: white; padding: 24px; border-radius: 16px; border: 1px solid #f1f5f9;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-    }
-    .stat-num { font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 4px; }
-    .stat-desc { font-size: 14px; color: var(--text-gray); font-weight: 600; }
-
-    /* --- About & Profile --- */
-    .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
-    .profile-img-box {
-      border-radius: 24px; overflow: hidden; position: relative;
-      box-shadow: 20px 20px 0 #f1f5f9;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .tag { background: #f1f5f9; padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--text-gray); }
-
-    /* --- Portfolio Cards --- */
-    .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
-    .pf-card {
-      background: white; border-radius: 20px; overflow: hidden; border: 1px solid #f1f5f9;
-      transition: 0.3s;
-    }
-    .pf-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-    .pf-thumb { height: 220px; background: #e2e8f0; overflow: hidden; position: relative; }
-    .pf-thumb img { width: 100%; height: 100%; transition: 0.5s; }
-    .pf-card:hover .pf-thumb img { transform: scale(1.05); }
-    .pf-body { padding: 24px; }
-    .pf-cat { color: var(--accent); font-size: 12px; font-weight: 800; margin-bottom: 8px; display: block; }
-    .pf-title { font-size: 20px; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
-    .pf-text { font-size: 15px; color: var(--text-gray); margin-bottom: 16px; }
-    .pf-link { font-size: 14px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 4px; }
-
-    /* --- Daily Life (Masonry Style) --- */
-    .daily-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-      grid-auto-rows: 200px;
-    }
-    .daily-item { border-radius: 16px; overflow: hidden; position: relative; background: #eee; }
-    .daily-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-    .daily-item:hover img { transform: scale(1.1); }
-    
-    /* 사진 배치 트릭: 큰 사진은 2칸 차지 */
-    .daily-item.large { grid-column: span 2; grid-row: span 2; }
-    .daily-item.wide { grid-column: span 2; }
-
-    /* --- Contact & PDF --- */
-    .contact-wrapper {
-      background: var(--primary); color: white; border-radius: 30px;
-      padding: 60px 40px; display: flex; flex-direction: column; align-items: center; text-align: center;
-    }
-    .pdf-download-box {
-      margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1);
-      border-radius: 16px; width: 100%; max-width: 500px;
-      display: flex; align-items: center; justify-content: space-between;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .pdf-text { text-align: left; }
-    .pdf-btn {
-      background: white; color: var(--primary); padding: 10px 20px;
-      border-radius: 10px; font-weight: 700; font-size: 14px;
+    .name{font-size:20px;font-weight:950;margin:6px 0 6px}
+    .desc{margin:0;color:var(--sub);line-height:1.55}
+    .metaRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .pill{
+      font-size:12px;font-weight:900;
+      padding:8px 10px;border-radius:999px;
+      background:#f8fafc;border:1px solid var(--line);
+      color:#334155;
     }
 
-    /* 반응형 */
-    @media (max-width: 768px) {
-      .nav-links { display: none; } /* 모바일에서 메뉴 숨김 (심플하게) */
-      .hero h1 { font-size: 36px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .daily-grid { grid-template-columns: 2fr 2fr; }
-      .pdf-download-box { flex-direction: column; gap: 15px; text-align: center; }
-      .pdf-text { text-align: center; }
+    /* Grids */
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .gridAuto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+
+    /* Proof cards */
+    .kpi{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+    }
+    .kpi .big{
+      font-size:34px;font-weight:1000;letter-spacing:-.03em;
+      margin:0;
+    }
+    .kpi .cap{margin:6px 0 0;color:var(--sub);line-height:1.5;font-weight:800}
+    .kpi .tag{
+      font-size:12px;font-weight:950;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:#0f172a;
+      white-space:nowrap;
+    }
+    .kpi .tag.ok{border-color:rgba(22,163,74,.25);background:rgba(22,163,74,.07);color:#14532d}
+    .kpi .tag.warn{border-color:rgba(245,158,11,.28);background:rgba(245,158,11,.10);color:#7c2d12}
+
+    .caseBox{
+      margin-top:14px;
+      border-top:1px dashed var(--line);
+      padding-top:14px;
+      display:grid;gap:10px;
+      color:#334155;
+      line-height:1.6;
+      font-weight:800;
+    }
+    .caseBox b{color:var(--text)}
+    .caseList{margin:0;padding-left:18px}
+    .caseList li{margin:6px 0}
+
+    /* Tabs */
+    .tabs{
+      display:flex;gap:8px;flex-wrap:wrap;
+      margin:0 0 14px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 12px;border-radius:999px;
+      font-weight:950;color:var(--sub);
+      cursor:pointer;
+    }
+    .tab.active{background:var(--accent);color:#fff;border-color:transparent}
+    .tabPanel{display:none}
+    .tabPanel.active{display:block}
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:12px;
+    }
+    .g{
+      grid-column:span 4;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#e5e7eb;
+      aspect-ratio: 4 / 3;
+      position:relative;
+    }
+    .g img{width:100%;height:100%;object-fit:cover;display:block}
+    .g .cap{
+      position:absolute;left:10px;bottom:10px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(229,231,235,.8);
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:950;font-size:12px;color:#0f172a;
+    }
+    .g.wide{grid-column:span 8;aspect-ratio: 8 / 3}
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+    .linkList{display:grid;gap:10px;margin-top:12px}
+    .linkItem{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--line);background:#fff;
+      font-weight:900;
+    }
+    .linkItem small{color:var(--sub);font-weight:900}
+    .stickyCta{
+      position:fixed;right:18px;bottom:18px;z-index:80;
+      display:flex;flex-direction:column;gap:10px;
+    }
+
+    /* Modal */
+    .modalBack{
+      position:fixed;inset:0;background:rgba(15,23,42,.55);
+      display:none;align-items:center;justify-content:center;
+      padding:18px;z-index:120;
+    }
+    .modal{
+      width:min(560px, 100%);
+      background:#fff;border-radius:18px;
+      border:1px solid rgba(229,231,235,.9);
+      box-shadow:0 30px 80px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .modalHead{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 16px;border-bottom:1px solid var(--line);
+      font-weight:1000;
+    }
+    .modalBody{padding:16px}
+    .close{
+      border:0;background:#f1f5f9;border-radius:10px;
+      padding:8px 10px;cursor:pointer;font-weight:950;
+    }
+    .qr{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#f1f5f9;
+      overflow:hidden;
+    }
+    .qr img{width:100%;height:auto;display:block}
+
+    footer{
+      margin:70px 0 30px;
+      color:var(--sub);
+      text-align:center;
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;gap:16px}
+      h1{font-size:36px}
+      .grid2{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .contactGrid{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .g{grid-column:span 12}
+      .g.wide{grid-column:span 12;aspect-ratio: 4/3}
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="nav-container">
-      <div class="logo">JANG HYE RIN</div>
-      
-      <nav class="nav-links">
-        <a href="#about" data-kr="소개" data-en="About" data-cn="介绍">소개</a>
-        <a href="#portfolio" data-kr="포트폴리오" data-en="Portfolio" data-cn="作品集">포트폴리오</a>
-        <a href="#daily" data-kr="라이프스타일" data-en="Lifestyle" data-cn="生活方式">라이프스타일</a>
-        <a href="#contact" data-kr="연락처" data-en="Contact" data-cn="联系方式">연락처</a>
-      </nav>
-
-      <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLang('kr')">KR</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('cn')">CN</button>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero container">
-    <span class="hero-badge" data-kr="🎤 실전형 쇼호스트" data-en="🎤 Live Commerce Host" data-cn="🎤 实战型带货主播">🎤 실전형 쇼호스트</span>
-    
-    <h1 data-kr="실시간 질문을<br><span style='color:#2563eb'>'구매 결정'</span>으로 바꿉니다."
-        data-en="Turning Real-time Questions<br>into <span style='color:#2563eb'>Purchase Decisions.</span>"
-        data-cn="将实时提问转化为<br><span style='color:#2563eb'>“购买决定”。</span>">
-      실시간 질문을<br><span style='color:#2563eb'>'구매 결정'</span>으로 바꿉니다.
-    </h1>
-
-    <p data-kr="콘텐츠 기획부터 라이브 진행, 현장 완판까지.<br>'설명'이 아니라, '결과'를 만드는 커뮤니케이션을 설계합니다."
-       data-en="From content planning to live hosting and sell-outs.<br>Designing communication that drives results, not just explanations."
-       data-cn="从内容策划到直播主持，再到现场售罄。<br>设计能带来结果的沟通，而不仅仅是说明。">
-      콘텐츠 기획부터 라이브 진행, 현장 완판까지.<br>
-      '설명'이 아니라, '결과'를 만드는 커뮤니케이션을 설계합니다.
-    </p>
-
-    <div class="hero-btns">
-      <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="btn btn-primary"
-         data-kr="섭외 문의하기" data-en="Contact Me" data-cn="合作咨询">섭외 문의하기</a>
-      <a href="#portfolio" class="btn btn-outline"
-         data-kr="핵심 성과 보기" data-en="View Works" data-cn="查看成果">핵심 성과 보기</a>
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <span class="dot"></span>
+      <strong>Dotorin</strong>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">300%</div>
-        <div class="stat-desc" data-kr="현장 재고 소진율" data-en="Stock Sell-out Rate" data-cn="现场库存售罄率">현장 재고 소진율</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">5.4K+</div>
-        <div class="stat-desc" data-kr="글로벌 구독자" data-en="Global Subscribers" data-cn="全球订阅者">글로벌 구독자</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">Hexa</div>
-        <div class="stat-desc" data-kr="기획/촬영/편집/진행" data-en="All-in-One Creator" data-cn="全能创作者">기획/촬영/편집/진행</div>
-      </div>
+    <ul class="navlinks">
+      <li><a href="#proof" data-kr="핵심" data-en="Highlights" data-cn="亮点">핵심</a></li>
+      <li><a href="#works" data-kr="프로젝트" data-en="Projects" data-cn="项目">프로젝트</a></li>
+      <li><a href="#skills" data-kr="역량" data-en="Skills" data-cn="能力">역량</a></li>
+      <li><a href="#gallery" data-kr="프로필" data-en="Profile" data-cn="形象">프로필</a></li>
+      <li><a href="#contact" data-kr="연락" data-en="Contact" data-cn="联系">연락</a></li>
+    </ul>
+
+    <div class="lang" aria-label="Language switch">
+      <button class="active" data-lang="kr" onclick="setLang('kr')">KR</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="cn" onclick="setLang('cn')">CN</button>
     </div>
-  </section>
+  </div>
+</header>
 
-  <section id="about" class="section bg-gray">
-    <div class="container about-grid">
-      <div class="profile-img-box">
-        <img src="main_profile.jpg" alt="장혜린 프로필" onerror="this.src='https://via.placeholder.com/500x600'">
-      </div>
-      <div>
-        <h2 style="font-size:32px; margin-bottom:20px;">
-          <span style="color:var(--accent); font-size:16px; display:block; margin-bottom:10px; font-weight:800;">WHO AM I?</span>
-          <span data-kr="현장에서 답을 찾는<br>육각형 인재, 장혜린입니다."
-                data-en="Finding answers in the field.<br>I'm Hyerin, the All-rounder."
-                data-cn="在现场寻找答案。<br>我是全能型人才，张惠麟。">
-            현장에서 답을 찾는<br>육각형 인재, 장혜린입니다.
-          </span>
-        </h2>
-        <p style="color:var(--text-gray); margin-bottom:30px;"
-           data-kr="'백문이 불여일견'. 저는 직접 부딪히며 배운 경험을 말로 전합니다.<br>보험 설계사의 꼼꼼함과 여행 유튜버의 기획력을 더해,<br>어떤 상품이든 매력적인 스토리로 풀어냅니다."
-           data-en="I deliver experiences learned firsthand.<br>Combining the meticulousness of an insurance planner with the planning skills of a travel YouTuber,<br>I turn any product into a compelling story."
-           data-cn="“百闻不如一见”。我用语言传达亲身经历的经验。<br>结合保险规划师的细致与旅游博主的策划力，<br>将任何商品转化为迷人的故事。">
-          '백문이 불여일견'. 저는 직접 부딪히며 배운 경험을 말로 전합니다.<br>
-          보험 설계사의 꼼꼼함과 여행 유튜버의 기획력을 더해,<br>어떤 상품이든 매력적인 스토리로 풀어냅니다.
-        </p>
-        
-        <div class="skill-tags">
-          <span class="tag">#CS Leaders 관리사</span>
-          <span class="tag">#롯데손해보험 설계사</span>
-          <span class="tag">#공청회 사회자</span>
-          <span class="tag">#OA 마스터</span>
-          <span class="tag">#영상편집 가능</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<main class="wrap">
 
-  <section id="portfolio" class="section">
-    <div class="container">
-      <div class="text-center">
-        <h2 style="font-size:32px;" data-kr="Featured Works" data-en="Featured Works" data-cn="精选作品">Featured Works</h2>
-        <p style="color:var(--text-gray);" data-kr="기록이 아닌 결과로 증명합니다." data-en="Proving with results, not just records." data-cn="用结果证明，而非记录。">기록이 아닌 결과로 증명합니다.</p>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div>
+      <div class="badgeRow">
+        <span class="badge" data-kr="KR → EN → CN" data-en="KR → EN → CN" data-cn="韩 → 英 → 中">KR → EN → CN</span>
+        <span class="badge" data-kr="실시간 설득 · 전환 중심" data-en="Real-time persuasion · conversion-driven" data-cn="实时沟通 · 转化导向">
+          실시간 설득 · 전환 중심
+        </span>
+        <span class="badge" data-kr="현장 검증" data-en="Field-tested" data-cn="现场验证">현장 검증</span>
       </div>
 
-      <div class="pf-grid">
-        <div class="pf-card">
-          <div class="pf-thumb">
-            <img src="mc_photo.jpg" alt="MC" onerror="this.src='https://via.placeholder.com/400x300'">
-          </div>
-          <div class="pf-body">
-            <span class="pf-cat">Broadcasting</span>
-            <div class="pf-title" data-kr="공공기관 & 행사 전문 MC" data-en="Professional MC" data-cn="专业活动主持">공공기관 & 행사 전문 MC</div>
-            <div class="pf-text" data-kr="청년의 날 해외청년 퀴즈대회 메인 사회자. 돌발 상황 대처 능력 보유." data-en="Main host for International Youth Quiz. Expert in handling live situations." data-cn="青年节海外青年智力竞赛主主持人。具备突发状况应对能力。">
-              청년의 날 해외청년 퀴즈대회 메인 사회자. 돌발 상황 대처 능력 보유.
-            </div>
-          </div>
-        </div>
+      <h1
+        data-kr="실시간 질문을<br>‘구매 결정’으로 바꿉니다"
+        data-en="I turn live questions<br>into purchase decisions"
+        data-cn="我把实时提问<br>变成购买决定">
+        실시간 질문을<br>‘구매 결정’으로 바꿉니다
+      </h1>
 
-        <div class="pf-card">
-          <div class="pf-thumb">
-            <img src="sales_photo.jpg" alt="Sales" onerror="this.src='https://via.placeholder.com/400x300'">
-          </div>
-          <div class="pf-body">
-            <span class="pf-cat">Field Sales</span>
-            <div class="pf-title" data-kr="오프라인 페어 완판 기록" data-en="Offline Fair Sell-out" data-cn="线下展会售罄记录">오프라인 페어 완판 기록</div>
-            <div class="pf-text" data-kr="지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 재고 전량 소진 달성." data-en="Hooking comments that stop passersby in 3 seconds. Achieved total stock sell-out." data-cn="3秒留住过路客的钩子话术。达成库存全部售罄。">
-              지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 재고 전량 소진 달성.
-            </div>
-          </div>
-        </div>
+      <p class="heroLead"
+         data-kr="콘텐츠·진행·세일즈 커뮤니케이션을 한 번에.<br>‘설명’이 아니라, <b>결정을 돕는 전달</b>을 설계합니다."
+         data-en="Content, hosting, and sales communication—together.<br>I design delivery that helps people decide, not just listen."
+         data-cn="把内容、主持与销售沟通整合在一起。<br>我设计的不是“介绍”，而是帮助人做决定的表达。">
+        콘텐츠·진행·세일즈 커뮤니케이션을 한 번에.<br>
+        ‘설명’이 아니라, <b>결정을 돕는 전달</b>을 설계합니다.
+      </p>
 
-        <div class="pf-card">
-          <div class="pf-thumb">
-            <img src="youtube_photo.jpg" alt="Content" onerror="this.src='https://via.placeholder.com/400x300'">
-          </div>
-          <div class="pf-body">
-            <span class="pf-cat">Global Contents</span>
-            <div class="pf-title" data-kr="글로벌 타깃 기획력" data-en="Global Planning" data-cn="全球策划力">글로벌 타깃 기획력</div>
-            <div class="pf-text" data-kr="구독자의 80%가 외국인. 언어를 넘어서는 비언어적 소통과 기획력." data-en="80% of subscribers are foreigners. Communication beyond language barriers." data-cn="80%订阅者为外国人。超越语言的非语言沟通与策划力。">
-              구독자의 80%가 외국인. 언어를 넘어서는 비언어적 소통과 기획력.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="daily" class="section bg-gray">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:40px;">
-        <h2 style="font-size:32px;" data-kr="Lifestyle & Vibe" data-en="Lifestyle & Vibe" data-cn="生活方式与氛围">Lifestyle & Vibe</h2>
-        <p style="color:var(--text-gray);" data-kr="다양한 카테고리를 소화하는 팔색조 매력" data-en="Versatile charm for various categories" data-cn="消化多种品类的八色鸟魅力">다양한 카테고리를 소화하는 팔색조 매력</p>
-      </div>
-
-      <div class="daily-grid">
-        <div class="daily-item large">
-          <img src="hanbok.jpg" alt="한복" onerror="this.src='https://via.placeholder.com/400x400'">
-        </div>
-        <div class="daily-item">
-          <img src="travel.jpg" alt="여행" onerror="this.src='https://via.placeholder.com/200x200'">
-        </div>
-        <div class="daily-item">
-          <img src="food.jpg" alt="음식" onerror="this.src='https://via.placeholder.com/200x200'">
-        </div>
-        <div class="daily-item wide">
-          <img src="casual.jpg" alt="캐주얼" onerror="this.src='https://via.placeholder.com/400x200'">
-        </div>
-        <div class="daily-item">
-          <img src="smile.jpg" alt="미소" onerror="this.src='https://via.placeholder.com/200x200'">
-        </div>
-         <div class="daily-item">
-          <img src="work.jpg" alt="작업" onerror="this.src='https://via.placeholder.com/200x200'">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="contact-wrapper">
-        <h2 style="margin-bottom:10px;" data-kr="Ready to Work Together?" data-en="Ready to Work Together?" data-cn="准备好合作了吗？">Ready to Work Together?</h2>
-        <p style="opacity:0.8; margin-bottom:30px;" data-kr="귀사의 매출을 책임질 목소리, 지금 바로 제안하세요." data-en="The voice that drives your sales. Propose now." data-cn="负责贵公司销售的声音，立即提案。">
-          귀사의 매출을 책임질 목소리, 지금 바로 제안하세요.
-        </p>
-
-        <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="btn" style="background:#fee500; color:#371c1d;">
-          <i class="ri-kakao-talk-fill"></i> <span data-kr="카카오톡 1:1 문의 (가장 빠름)" data-en="KakaoTalk Chat (Fastest)" data-cn="KakaoTalk 咨询 (最快)">카카오톡 1:1 문의 (가장 빠름)</span>
+      <div class="heroActions">
+        <!-- TODO: 오픈카톡 링크 넣기 -->
+        <a class="btn kakao" href="https://open.kakao.com/" target="_blank" rel="noreferrer"
+           data-kr="오픈카톡으로 바로 연락"
+           data-en="Chat via Open KakaoTalk"
+           data-cn="用Kakao开放聊天联系">
+          💬 <span data-kr="바로 연락" data-en="Chat now" data-cn="立即联系">바로 연락</span>
         </a>
 
-        <div class="pdf-download-box">
-          <div class="pdf-text">
-            <div style="font-weight:800; font-size:16px; margin-bottom:4px;">📄 Resume (PDF)</div>
-            <div style="font-size:13px; opacity:0.8;" data-kr="채용 담당자를 위한 1장 요약본" data-en="One-page summary for recruiters" data-cn="招聘负责人专用一页摘要">채용 담당자를 위한 1장 요약본</div>
-          </div>
-          <a href="#" class="pdf-btn" onclick="alert('PDF 파일 준비중입니다.')" data-kr="다운로드" data-en="Download" data-cn="下载">다운로드</a>
+        <a class="btn primary" href="#proof"
+           data-kr="핵심 성과 보기"
+           data-en="See highlights"
+           data-cn="查看亮点">
+          ⚡ <span data-kr="핵심 보기" data-en="Highlights" data-cn="亮点">핵심 보기</span>
+        </a>
+
+        <a class="btn" href="#contact"
+           data-kr="연락 & 링크"
+           data-en="Contact & links"
+           data-cn="联系与链接">
+          🔗 <span data-kr="링크" data-en="Links" data-cn="链接">링크</span>
+        </a>
+      </div>
+
+      <div class="miniNote" id="cnNote">
+        由于中国大陆部分地区可能无法访问部分平台，<br>
+        本页面强调“结果与证据结构”，方便快速理解与转发。
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="profileTop">
+        <div class="avatar">
+          <!-- TODO: 대표 프로필 사진 파일명으로 교체 -->
+          <img src="profile_main.jpg" alt="Dotorin" onerror="this.parentElement.textContent='PHOTO';">
         </div>
-        
-        <div style="margin-top:30px; font-size:14px; opacity:0.6;">
-          E-mail: dotorin33@gmail.com
+        <div>
+          <div class="label"
+               data-kr="PORTFOLIO / JOB APPLICATION"
+               data-en="PORTFOLIO / JOB APPLICATION"
+               data-cn="作品集 / 求职">
+            PORTFOLIO / JOB APPLICATION
+          </div>
+          <div class="name">Dotorin (도토린)</div>
+          <p class="desc"
+             data-kr="커뮤니케이션 기반 직무 전반(진행/콘텐츠/마케팅/세일즈/교육)에 지원 가능한 포트폴리오입니다."
+             data-en="A portfolio for communication-based roles (hosting/content/marketing/sales/education)."
+             data-cn="适用于以沟通为核心的岗位（主持/内容/营销/销售/教育）。">
+            커뮤니케이션 기반 직무 전반(진행/콘텐츠/마케팅/세일즈/교육)에 지원 가능한 포트폴리오입니다.
+          </p>
+          <div class="metaRow">
+            <span class="pill" data-kr="실시간 진행" data-en="Live hosting" data-cn="实时主持">실시간 진행</span>
+            <span class="pill" data-kr="콘텐츠 제작" data-en="Content production" data-cn="内容制作">콘텐츠 제작</span>
+            <span class="pill" data-kr="세일즈 커뮤니케이션" data-en="Sales communication" data-cn="销售沟通">세일즈 커뮤니케이션</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <script>
-    // 3개 국어 변환 스크립트
-    function setLang(lang) {
-      // 1. 버튼 스타일 변경
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
-      });
+  <!-- PROOF / HIGHLIGHTS -->
+  <section id="proof">
+    <h2 data-kr="핵심 성과" data-en="Highlights" data-cn="核心亮点">핵심 성과</h2>
+    <p class="section-sub"
+       data-kr="‘말 잘함’이 아니라, <b>결과</b>로 보여드립니다."
+       data-en="Not just “good speaking”—I show outcomes."
+       data-cn="不只是“会说”，而是用结果证明。">
+      ‘말 잘함’이 아니라, <b>결과</b>로 보여드립니다.
+    </p>
 
-      // 2. 텍스트 내용 변경 (data- 속성 이용)
-      document.querySelectorAll(`[data-${lang}]`).forEach(el => {
-        el.innerHTML = el.getAttribute(`data-${lang}`);
-      });
-    }
-  </script>
+    <div class="grid3">
+      <div class="card">
+        <div class="kpi">
+          <div>
+            <p class="big">₩2,000,000+</p>
+            <div class="cap"
+                 data-kr="베이비페어 ‘베베루나’ 부스에서<br><b>1인 단독 1일 판매</b>"
+                 data-en="Solo 1-day sales at Baby Fair booth (Bebelua)"
+                 data-cn="婴童展“Bebelua”展位<br><b>单人单日销售额</b>">
+              베이비페어 ‘베베루나’ 부스에서<br><b>1인 단독 1일 판매</b>
+            </div>
+          </div>
+          <span class="tag ok"
+                data-kr="검증된 수치"
+                data-en="Verified figure"
+                data-cn="已验证数据">검증된 수치</span>
+        </div>
+
+        <div class="caseBox">
+          <div data-kr="제품: <b>유아 장난감(놀그라미)</b>"
+               data-en="Product: <b>Baby toy (Nolgeurami)</b>"
+               data-cn="产品：<b>婴童玩具（놀그라미）</b>">
+            제품: <b>유아 장난감(놀그라미)</b>
+          </div>
+          <div data-kr="역할: <b>제품 시연 · 질문 응대 · 구매저항 해소 · 클로징</b>"
+               data-en="Role: <b>Demo · Q&A · Objection handling · Closing</b>"
+               data-cn="角色：<b>演示 · 问答 · 消除顾虑 · 成交引导</b>">
+            역할: <b>제품 시연 · 질문 응대 · 구매저항 해소 · 클로징</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kpi">
+          <div>
+            <p class="big"
+               data-kr="실시간 전환"
+               data-en="Real-time conversion"
+               data-cn="实时转化">실시간 전환</p>
+            <div class="cap"
+                 data-kr="현장에서 고객 반응을 읽고<br><b>설명 순서를 즉시 조정</b>"
+                 data-en="Read reactions and <b>reorder messaging on the fly</b>"
+                 data-cn="读取现场反应<br><b>即时调整表达顺序</b>">
+              현장에서 고객 반응을 읽고<br><b>설명 순서를 즉시 조정</b>
+            </div>
+          </div>
+          <span class="tag warn"
+                data-kr="구조로 증명"
+                data-en="Proven by structure"
+                data-cn="以结构证明">구조로 증명</span>
+        </div>
+
+        <ul class="caseList">
+          <li data-kr="<b>질문 유도</b> → 니즈 파악"
+              data-en="<b>Ask</b> → identify needs"
+              data-cn="<b>提问引导</b> → 识别需求">
+            <b>질문 유도</b> → 니즈 파악
+          </li>
+          <li data-kr="<b>시연</b> → 불안 포인트 해소"
+              data-en="<b>Demo</b> → remove friction"
+              data-cn="<b>演示</b> → 消除顾虑">
+            <b>시연</b> → 불안 포인트 해소
+          </li>
+          <li data-kr="<b>클로징 멘트</b> → 결제 결심"
+              data-en="<b>Closing</b> → decision"
+              data-cn="<b>成交话术</b> → 决策">
+            <b>클로징 멘트</b> → 결제 결심
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="kpi">
+          <div>
+            <p class="big"
+               data-kr="멀티 채널"
+               data-en="Multi-channel"
+               data-cn="多渠道">멀티 채널</p>
+            <div class="cap"
+                 data-kr="YouTube 중심 콘텐츠 운영 +<br>지원 직무에 맞춘 포트폴리오로 확장"
+                 data-en="YouTube-led content + portfolio tailored for job roles"
+                 data-cn="以YouTube内容为核心<br>并扩展为求职作品集">
+              YouTube 중심 콘텐츠 운영 +<br>지원 직무에 맞춘 포트폴리오로 확장
+            </div>
+          </div>
+          <span class="tag"
+                data-kr="링크로 확인"
+                data-en="See links"
+                data-cn="查看链接">링크로 확인</span>
+        </div>
+        <div class="caseBox">
+          <div data-kr="※ 여행이 ‘주제’라면, 저는 <b>기획·현장 운영·스토리텔링</b>을 ‘능력’으로 가져갑니다."
+               data-en="If travel is the topic, my real skill is <b>planning, execution, and storytelling</b>."
+               data-cn="旅行是“主题”，我的能力是<b>策划、现场执行与叙事</b>。">
+            ※ 여행이 ‘주제’라면, 저는 <b>기획·현장 운영·스토리텔링</b>을 ‘능력’으로 가져갑니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS / PROJECTS -->
+  <section id="works">
+    <h2 data-kr="프로젝트" data-en="Projects" data-cn="项目">프로젝트</h2>
+    <p class="section-sub"
+       data-kr="직장 경력 대신, <b>프로젝트·역할·결과</b>로 보여드립니다."
+       data-en="Instead of job titles, I show <b>projects, roles, and outcomes</b>."
+       data-cn="不靠职位堆砌，用<b>项目/角色/结果</b>说话。">
+      직장 경력 대신, <b>프로젝트·역할·결과</b>로 보여드립니다.
+    </p>
+
+    <div class="tabs" role="tablist" aria-label="Project categories">
+      <button class="tab active" data-tab="sales" onclick="openTab('sales')"
+              data-kr="세일즈/전환" data-en="Sales/Conversion" data-cn="销售/转化">세일즈/전환</button>
+      <button class="tab" data-tab="hosting" onclick="openTab('hosting')"
+              data-kr="진행/MC" data-en="Hosting/MC" data-cn="主持/控场">진행/MC</button>
+      <button class="tab" data-tab="content" onclick="openTab('content')"
+              data-kr="콘텐츠" data-en="Content" data-cn="内容">콘텐츠</button>
+      <button class="tab" data-tab="education" onclick="openTab('education')"
+              data-kr="교육/코칭" data-en="Education/Coaching" data-cn="教育/辅导">교육/코칭</button>
+    </div>
+
+    <div class="tabPanel active" id="tab-sales" role="tabpanel">
+      <div class="gridAuto">
+        <div class="card">
+          <div class="label" data-kr="CASE 01" data-en="CASE 01" data-cn="案例 01">CASE 01</div>
+          <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+              data-kr="베이비페어 | 베베루나 (놀그라미)"
+              data-en="Baby Fair | Bebelua (Nolgeurami)"
+              data-cn="婴童展 | Bebelua（놀그라미）">
+            베이비페어 | 베베루나 (놀그라미)
+          </h3>
+          <p class="muted" style="margin:0;line-height:1.65"
+             data-kr="1인 단독 운영. 고객 질문을 ‘구매 결심’으로 바꾸는 실시간 진행을 수행했습니다."
+             data-en="Solo operation. Real-time Q&A that converts hesitation into buying decisions."
+             data-cn="单人独立负责。用实时问答把犹豫转为购买决定。">
+            1인 단독 운영. 고객 질문을 ‘구매 결심’으로 바꾸는 실시간 진행을 수행했습니다.
+          </p>
+
+          <div class="caseBox">
+            <div data-kr="결과: <b>₩2,000,000+ / day</b> (1인 단독)"
+                 data-en="Outcome: <b>₩2,000,000+ / day</b> (solo)"
+                 data-cn="结果：<b>200万韩元+ / 天</b>（单人）">
+              결과: <b>₩2,000,000+ / day</b> (1인 단독)
+            </div>
+            <div data-kr="내 기여: <b>시연 → FAQ → 불안 해소 → 클로징</b>"
+                 data-en="My role: <b>Demo → FAQ → friction removal → closing</b>"
+                 data-cn="我的贡献：<b>演示 → FAQ → 消除顾虑 → 成交</b>">
+              내 기여: <b>시연 → FAQ → 불안 해소 → 클로징</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="label" data-kr="TEMPLATE" data-en="TEMPLATE" data-cn="模板">TEMPLATE</div>
+          <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+              data-kr="라이브형 진행 스크립트(샘플)"
+              data-en="Live-style script (sample)"
+              data-cn="直播式脚本（示例）">
+            라이브형 진행 스크립트(샘플)
+          </h3>
+          <p class="muted" style="margin:0;line-height:1.65"
+             data-kr="영상이 없어도 ‘진행 능력’은 구조로 보여줄 수 있습니다."
+             data-en="Even without footage, hosting skills can be shown through structure."
+             data-cn="即使没有视频，也能用结构展示主持能力。">
+            영상이 없어도 ‘진행 능력’은 구조로 보여줄 수 있습니다.
+          </p>
+
+          <ul class="caseList" style="margin-top:12px">
+            <li data-kr="<b>오프닝 10초</b>: 문제 공감 + 오늘 혜택 한 줄"
+                data-en="<b>10s opening</b>: empathy + one-line benefit"
+                data-cn="<b>10秒开场</b>：共情 + 一句利益点">
+              <b>오프닝 10초</b>: 문제 공감 + 오늘 혜택 한 줄
+            </li>
+            <li data-kr="<b>핵심 20초</b>: 기능 3개를 ‘상황’으로 설명"
+                data-en="<b>20s core</b>: 3 features explained as situations"
+                data-cn="<b>20秒核心</b>：用“场景”讲3个功能">
+              <b>핵심 20초</b>: 기능 3개를 ‘상황’으로 설명
+            </li>
+            <li data-kr="<b>FAQ 20초</b>: 안전/연령/관리 질문 선제 대응"
+                data-en="<b>20s FAQ</b>: safety/age/care answered proactively"
+                data-cn="<b>20秒FAQ</b>：安全/年龄/清洁维护先回答">
+              <b>FAQ 20초</b>: 안전/연령/관리 질문 선제 대응
+            </li>
+            <li data-kr="<b>클로징 10초</b>: 망설임 해소 + 결제 유도"
+                data-en="<b>10s close</b>: remove hesitation + CTA"
+                data-cn="<b>10秒收尾</b>：消除犹豫 + 行动引导">
+              <b>클로징 10초</b>: 망설임 해소 + 결제 유도
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabPanel" id="tab-hosting" role="tabpanel">
+      <div class="gridAuto">
+        <div class="card">
+          <div class="label" data-kr="NOTE" data-en="NOTE" data-cn="说明">NOTE</div>
+          <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+              data-kr="진행/MC 섹션"
+              data-en="Hosting/MC section"
+              data-cn="主持/控场板块">
+            진행/MC 섹션
+          </h3>
+          <p class="muted" style="margin:0;line-height:1.65"
+             data-kr="여기에 ‘행사 사회/진행’ 경험을 프로젝트 형식(역할→행동→결과)으로 넣으면 강해집니다. (추가 입력 예정)"
+             data-en="Add your MC experience as projects (role→action→outcome). (To be added)"
+             data-cn="把主持经验按项目格式（角色→行动→结果）写出来会很强。（待补充）">
+            여기에 ‘행사 사회/진행’ 경험을 프로젝트 형식(역할→행동→결과)으로 넣으면 강해집니다. (추가 입력 예정)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabPanel" id="tab-content" role="tabpanel">
+      <div class="gridAuto">
+        <div class="card">
+          <div class="label" data-kr="CHANNEL" data-en="CHANNEL" data-cn="频道">CHANNEL</div>
+          <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+              data-kr="YouTube | DotoRin33"
+              data-en="YouTube | DotoRin33"
+              data-cn="YouTube | DotoRin33">
+            YouTube | DotoRin33
+          </h3>
+          <p class="muted" style="margin:0;line-height:1.65"
+             data-kr="여행은 ‘주제’이고, 강점은 <b>기획·현장 운영·스토리텔링</b>입니다."
+             data-en="Travel is the topic; my strength is <b>planning, execution, and storytelling</b>."
+             data-cn="旅行是主题；我的优势是<b>策划、执行与叙事</b>。">
+            여행은 ‘주제’이고, 강점은 <b>기획·현장 운영·스토리텔링</b>입니다.
+          </p>
+
+          <div class="heroActions" style="margin-top:14px">
+            <a class="btn primary" href="https://www.youtube.com/@DotoRin33" target="_blank" rel="noreferrer"
+               data-kr="채널 열기"
+               data-en="Open channel"
+               data-cn="打开频道">
+              ▶ <span data-kr="채널 보기" data-en="View channel" data-cn="查看频道">채널 보기</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabPanel" id="tab-education" role="tabpanel">
+      <div class="gridAuto">
+        <div class="card">
+          <div class="label" data-kr="NOTE" data-en="NOTE" data-cn="说明">NOTE</div>
+          <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+              data-kr="교육/코칭 섹션"
+              data-en="Education/Coaching section"
+              data-cn="教育/辅导板块">
+            교육/코칭 섹션
+          </h3>
+          <p class="muted" style="margin:0;line-height:1.65"
+             data-kr="발성/발음, 전달 구조 코칭 경험이 있으면 ‘커뮤니케이션 직무’에서 강력한 근거가 됩니다. (추가 입력 예정)"
+             data-en="Voice/pronunciation and delivery coaching become strong proof for communication roles. (To be added)"
+             data-cn="发声/发音与表达结构辅导经验，是沟通类岗位的强力证据。（待补充）">
+            발성/발음, 전달 구조 코칭 경험이 있으면 ‘커뮤니케이션 직무’에서 강력한 근거가 됩니다. (추가 입력 예정)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 data-kr="핵심 역량" data-en="Core skills" data-cn="核心能力">핵심 역량</h2>
+    <p class="section-sub"
+       data-kr="어떤 직무든 통하는 ‘커뮤니케이션 스킬’을 결과 중심으로 정리했습니다."
+       data-en="Communication skills that transfer across roles—summarized by outcomes."
+       data-cn="跨岗位通用的沟通能力，用结果导向来呈现。">
+      어떤 직무든 통하는 ‘커뮤니케이션 스킬’을 결과 중심으로 정리했습니다.
+    </p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:16px;font-weight:1000"
+            data-kr="1) 반응 기반 진행"
+            data-en="1) Reaction-driven hosting"
+            data-cn="1) 反应驱动的主持">
+          1) 반응 기반 진행
+        </h3>
+        <ul class="caseList">
+          <li data-kr="실시간 질문을 <b>설명 순서</b>로 재구성"
+              data-en="Reorder messaging based on live questions"
+              data-cn="根据实时提问重排表达顺序">
+            실시간 질문을 <b>설명 순서</b>로 재구성
+          </li>
+          <li data-kr="불안/망설임 포인트를 <b>FAQ</b>로 선제 대응"
+              data-en="Proactively address hesitation via FAQ"
+              data-cn="用FAQ提前消除顾虑">
+            불안/망설임 포인트를 <b>FAQ</b>로 선제 대응
+          </li>
+          <li data-kr="클로징에서 ‘혜택’보다 <b>결정 이유</b>를 제공"
+              data-en="Close with reasons to decide, not just discounts"
+              data-cn="收尾强调“决策理由”，不只讲优惠">
+            클로징에서 ‘혜택’보다 <b>결정 이유</b>를 제공
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:16px;font-weight:1000"
+            data-kr="2) 스토리텔링 & 콘텐츠"
+            data-en="2) Storytelling & content"
+            data-cn="2) 叙事与内容">
+          2) 스토리텔링 & 콘텐츠
+        </h3>
+        <ul class="caseList">
+          <li data-kr="기획 → 촬영 → 편집 → 배포 흐름 이해"
+              data-en="End-to-end workflow: plan→shoot→edit→publish"
+              data-cn="全流程：策划→拍摄→剪辑→发布">
+            기획 → 촬영 → 편집 → 배포 흐름 이해
+          </li>
+          <li data-kr="정보를 ‘보는 재미’로 바꾸는 구성"
+              data-en="Turn information into watchable structure"
+              data-cn="把信息变得“有看点”">
+            정보를 ‘보는 재미’로 바꾸는 구성
+          </li>
+          <li data-kr="KR/EN/CN 멀티 언어 전개(포트폴리오 확장)"
+              data-en="KR/EN/CN multilanguage presentation"
+              data-cn="韩/英/中多语言呈现">
+            KR/EN/CN 멀티 언어 전개(포트폴리오 확장)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2 data-kr="프로필 이미지" data-en="Profile gallery" data-cn="形象照片">프로필 이미지</h2>
+    <p class="section-sub"
+       data-kr="사진은 ‘한 번에 나열’하지 않고, 역할에 맞게 분산 배치합니다. (아래는 예시 슬롯)"
+       data-en="Images are distributed by role, not dumped all at once. (Example slots)"
+       data-cn="照片按角色分布呈现，不一次性堆叠。（示例位）">
+      사진은 ‘한 번에 나열’하지 않고, 역할에 맞게 분산 배치합니다. (아래는 예시 슬롯)
+    </p>
+
+    <div class="gallery">
+      <div class="g wide">
+        <img src="profile_business_wide.jpg" alt="Business concept" onerror="this.style.display='none'">
+        <span class="cap" data-kr="Business / Trust" data-en="Business / Trust" data-cn="商务 / 信任">Business / Trust</span>
+      </div>
+      <div class="g">
+        <img src="profile_clean.jpg" alt="Clean studio" onerror="this.style.display='none'">
+        <span class="cap" data-kr="Clean" data-en="Clean" data-cn="清爽">Clean</span>
+      </div>
+      <div class="g">
+        <img src="profile_warm.jpg" alt="Warm story" onerror="this.style.display='none'">
+        <span class="cap" data-kr="Warm Story" data-en="Warm Story" data-cn="温柔叙事">Warm Story</span>
+      </div>
+      <div class="g">
+        <img src="profile_extra.jpg" alt="Extra" onerror="this.style.display='none'">
+        <span class="cap" data-kr="Extra" data-en="Extra" data-cn="补充">Extra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 data-kr="연락 & 링크" data-en="Contact & links" data-cn="联系与链接">연락 & 링크</h2>
+    <p class="section-sub"
+       data-kr="언제든지 빠르게 연결될 수 있도록 ‘한 번에’ 정리했습니다."
+       data-en="All links in one place—for fast connection."
+       data-cn="把所有联系方式集中在这里，方便快速沟通。">
+      언제든지 빠르게 연결될 수 있도록 ‘한 번에’ 정리했습니다.
+    </p>
+
+    <div class="contactGrid">
+      <div class="card">
+        <div class="label" data-kr="PRIMARY CONTACT" data-en="PRIMARY CONTACT" data-cn="主要联系">PRIMARY CONTACT</div>
+        <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+            data-kr="오픈카톡이 가장 빠릅니다"
+            data-en="Open KakaoTalk is the fastest"
+            data-cn="Kakao开放聊天最快">
+          오픈카톡이 가장 빠릅니다
+        </h3>
+        <p class="muted" style="margin:0;line-height:1.65"
+           data-kr="채용/프로젝트/콜라보/강의 등 어떤 문의든 편하게 주세요."
+           data-en="Feel free to reach out for hiring, projects, collaborations, or teaching."
+           data-cn="招聘/项目/合作/授课等都欢迎联系。">
+          채용/프로젝트/콜라보/강의 등 어떤 문의든 편하게 주세요.
+        </p>
+
+        <div class="heroActions" style="margin-top:14px">
+          <a class="btn kakao" href="https://open.kakao.com/" target="_blank" rel="noreferrer">
+            💬 <span data-kr="오픈카톡 열기" data-en="Open KakaoTalk" data-cn="打开Kakao聊天">오픈카톡 열기</span>
+          </a>
+
+          <!-- TODO: 이메일 교체 -->
+          <a class="btn primary" href="mailto:your.email@example.com">
+            📧 <span data-kr="이메일" data-en="Email" data-cn="邮箱">이메일</span>
+          </a>
+
+          <button class="btn" onclick="openModal()">
+            🧾 <span data-kr="QR(선택)" data-en="QR (optional)" data-cn="二维码（可选）">QR(선택)</span>
+          </button>
+        </div>
+
+        <div class="linkList">
+          <a class="linkItem" href="https://www.youtube.com/@DotoRin33" target="_blank" rel="noreferrer">
+            <span>▶ YouTube</span>
+            <small data-kr="채널" data-en="channel" data-cn="频道">채널</small>
+          </a>
+
+          <!-- TODO: 인스타/블로그 링크 교체 -->
+          <a class="linkItem" href="https://instagram.com/" target="_blank" rel="noreferrer">
+            <span>📷 Instagram</span>
+            <small data-kr="포트폴리오" data-en="portfolio" data-cn="作品集">포트폴리오</small>
+          </a>
+
+          <a class="linkItem" href="https://blog.naver.com/" target="_blank" rel="noreferrer">
+            <span>📝 Blog</span>
+            <small data-kr="자료" data-en="resources" data-cn="资料">자료</small>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="label" data-kr="DOWNLOAD" data-en="DOWNLOAD" data-cn="下载">DOWNLOAD</div>
+        <h3 style="margin:8px 0 10px;font-size:18px;font-weight:1000"
+            data-kr="원페이지 PDF 버전"
+            data-en="One-page PDF version"
+            data-cn="一页PDF版本">
+          원페이지 PDF 버전
+        </h3>
+        <p class="muted" style="margin:0;line-height:1.65"
+           data-kr="채용 담당자에게 보내기 쉬운 1페이지 버전 링크를 여기에 추가하세요. (추가 예정)"
+           data-en="Add a one-page PDF link here for recruiters. (To be added)"
+           data-cn="在这里添加便于转发的一页PDF链接。（待补充）">
+          채용 담당자에게 보내기 쉬운 1페이지 버전 링크를 여기에 추가하세요. (추가 예정)
+        </p>
+
+        <div class="heroActions" style="margin-top:14px">
+          <a class="btn" href="#" onclick="return false;"
+             data-kr="PDF 링크(준비중)"
+             data-en="PDF link (coming soon)"
+             data-cn="PDF链接（准备中）">
+            📄 <span data-kr="준비중" data-en="Coming soon" data-cn="准备中">준비중</span>
+          </a>
+        </div>
+
+        <div class="caseBox">
+          <div data-kr="포트폴리오 문구/수치가 늘어나면, 이 페이지는 자동으로 확장 가능합니다."
+               data-en="As you add more proof, this page scales naturally."
+               data-cn="补充更多证明后，本页面可自然扩展。">
+            포트폴리오 문구/수치가 늘어나면, 이 페이지는 자동으로 확장 가능합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © 2026 Dotorin. All rights reserved.<br>
+  <span data-kr="KR 기본 · EN · CN"
+        data-en="KR default · EN · CN"
+        data-cn="韩语默认 · 英语 · 中文">KR 기본 · EN · CN</span>
+</footer>
+
+<!-- Sticky CTA -->
+<div class="stickyCta" aria-label="Quick contact">
+  <a class="btn kakao" href="https://open.kakao.com/" target="_blank" rel="noreferrer">
+    💬 <span data-kr="오픈카톡" data-en="KakaoTalk" data-cn="Kakao聊天">오픈카톡</span>
+  </a>
+  <a class="btn primary" href="mailto:your.email@example.com">
+    📧 <span data-kr="메일" data-en="Email" data-cn="邮箱">메일</span>
+  </a>
+</div>
+
+<!-- Modal (QR optional) -->
+<div class="modalBack" id="qrModal" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <div class="modalHead">
+      <span data-kr="연락 QR (선택)"
+            data-en="Contact QR (optional)"
+            data-cn="联系二维码（可选）">연락 QR (선택)</span>
+      <button class="close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="qr">
+        <!-- TODO: QR 이미지 넣기 -->
+        <img src="contact_qr.jpg" alt="QR" onerror="this.parentElement.innerHTML='QR 이미지를 준비중입니다.'">
+      </div>
+      <p class="muted" style="margin:12px 0 0;line-height:1.6"
+         data-kr="QR은 옵션입니다. 오픈카톡/이메일 버튼이 기본입니다."
+         data-en="QR is optional. KakaoTalk/Email buttons are primary."
+         data-cn="二维码是可选项。主要联系方式为Kakao聊天/邮箱按钮。">
+        QR은 옵션입니다. 오픈카톡/이메일 버튼이 기본입니다.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Language switch (KR default)
+  function setLang(lang){
+    document.querySelectorAll('.lang button').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    document.querySelectorAll('[data-kr]').forEach(el=>{
+      const t = el.getAttribute('data-' + lang);
+      if(t) el.innerHTML = t;
+    });
+
+    const cnNote = document.getElementById('cnNote');
+    if(cnNote) cnNote.style.display = (lang === 'cn') ? 'block' : 'none';
+
+    document.documentElement.lang = (lang === 'kr') ? 'ko' : (lang === 'en' ? 'en' : 'zh');
+  }
+
+  // Tabs
+  function openTab(key){
+    document.querySelectorAll('.tab').forEach(t=>{
+      t.classList.toggle('active', t.dataset.tab === key);
+    });
+    document.querySelectorAll('.tabPanel').forEach(p=>{
+      p.classList.remove('active');
+    });
+    const panel = document.getElementById('tab-' + key);
+    if(panel) panel.classList.add('active');
+  }
+
+  // Modal
+  function openModal(){ document.getElementById('qrModal').style.display='flex'; }
+  function closeModal(){ document.getElementById('qrModal').style.display='none'; }
+
+  // Init
+  setLang('kr');
+</script>
 
 </body>
 </html>
