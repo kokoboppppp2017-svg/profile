@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>장혜린 | 콘텐츠·진행·커뮤니케이션</title>
+  <title>장혜린 | 매출을 만드는 쇼호스트</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -72,7 +72,6 @@
       background:var(--white);padding:22px 16px;border-radius:18px;
       box-shadow:var(--shadow);flex:1;text-align:center;border:1px solid var(--border)
     }
-    /* [모바일 깨짐 해결] white-space: nowrap 추가 */
     .stat-num{font-size:26px;font-weight:900;color:var(--accent);margin-bottom:6px;letter-spacing:-.5px; white-space:nowrap;}
     .stat-label{font-size:13px;color:var(--text-gray);font-weight:700;word-break:keep-all}
 
@@ -99,32 +98,45 @@
     .why-title{font-size:19px;font-weight:900;margin-bottom:10px}
     .why-desc{font-size:15px;color:var(--text-gray);word-break:keep-all; line-height: 1.5;}
 
-    /* License Badges */
-    .license-box {
-      margin-top: 30px; text-align: center;
-    }
-    .license-title {
-      font-size: 14px; font-weight: 800; color: var(--text-gray); margin-bottom: 12px; letter-spacing: 1px;
-    }
-    .badges {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-    }
+    /* Tooltip Styles for Badges */
+    .license-box { margin-top: 40px; text-align: center; }
+    .license-title { font-size: 14px; font-weight: 800; color: var(--text-gray); margin-bottom: 12px; letter-spacing: 1px; }
+    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    
     .badge {
-      background: white; border: 1px solid #cbd5e1; padding: 6px 14px; border-radius: 50px;
+      position: relative; cursor: pointer;
+      background: white; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 50px;
       font-size: 13px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 6px;
+      transition: 0.2s;
     }
     .badge i { color: var(--gold); }
+    .badge:hover { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
 
-    /* TOGGLE SECTION (History) */
-    .history-toggle-area {
-      margin-top: 20px; text-align: center;
+    /* Tooltip text */
+    .badge::after {
+      content: attr(data-tooltip); /* HTML의 data-tooltip 내용을 가져옴 */
+      position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
+      background: var(--primary); color: white; padding: 6px 12px; border-radius: 8px;
+      font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10;
     }
+    .badge:hover::after { opacity: 1; bottom: 130%; }
+    
+    /* Toggle Button Animation */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    .history-toggle-area { margin-top: 30px; text-align: center; }
     .toggle-btn {
-      background: transparent; border: 1px solid #cbd5e1; padding: 12px 24px;
-      border-radius: 50px; font-weight: 700; cursor: pointer; color: var(--text-gray);
+      background: white; border: 2px solid var(--accent); padding: 12px 28px;
+      border-radius: 50px; font-weight: 800; cursor: pointer; color: var(--accent);
       display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
+      animation: pulse 2s infinite; /* 시선 집중 효과 */
     }
-    .toggle-btn:hover { background: white; border-color: var(--primary); color: var(--primary); }
+    .toggle-btn:hover { background: var(--accent); color: white; }
     
     .history-content {
       max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;
@@ -132,34 +144,45 @@
       border: 1px solid var(--border); opacity: 0;
     }
     .history-content.open { opacity: 1; border-color: #cbd5e1; }
-    
     .history-inner { padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
     .history-group h4 { font-size: 16px; font-weight: 900; color: var(--accent); margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
     .history-list li { font-size: 14px; margin-bottom: 8px; color: var(--text-gray); display: flex; align-items: flex-start; gap: 8px; }
     .history-list li::before { content: "•"; color: var(--accent); font-weight: bold; }
 
-    /* Works (compact) */
-    .work-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;margin-top:34px;
-    }
+    /* Works Grid */
+    .work-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:34px; }
     .work-card{
-      background:var(--white);
-      border:1px solid #f1f5f9;
-      border-radius:20px;
-      box-shadow:0 4px 20px rgba(0,0,0,0.05);
-      overflow:hidden;
-      transition:.25s;
+      background:var(--white); border:1px solid #f1f5f9; border-radius:20px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.05); overflow:hidden; transition:.25s;
     }
     .work-card:hover{transform:translateY(-6px);box-shadow:0 16px 42px rgba(0,0,0,0.10)}
-    .work-body{padding:22px}
-    .work-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .work-body{padding:24px}
+    .work-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
     .work-cat{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.8px;text-transform:uppercase}
-    .work-badge{font-size:12px;font-weight:900;background:var(--gold);color:#fff;padding:6px 10px;border-radius:10px}
-    .work-title{font-size:18px;font-weight:900;margin-bottom:8px;line-height:1.25;word-break:keep-all}
-    .work-text{font-size:14px;color:var(--text-gray);font-weight:600;word-break:keep-all}
-    .work-meta{margin-top:12px;font-size:13px;color:#64748b;font-weight:700}
+    .work-badge{font-size:12px;font-weight:900;background:var(--gold);color:#fff;padding:4px 8px;border-radius:6px}
+    .work-title{font-size:20px;font-weight:900;margin-bottom:10px;line-height:1.3;word-break:keep-all}
+    .work-text{font-size:15px;color:var(--text-gray);font-weight:500;word-break:keep-all; margin-bottom: 15px;}
+    .work-meta{font-size:13px;color:#64748b;font-weight:700; background:#f8fafc; padding:10px; border-radius:8px;}
+
+    /* Highlights (Video) */
+    .video-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+    .video-card{
+      background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      transition: 0.3s;
+    }
+    .video-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .video-thumb{
+      height: 160px; background: #e2e8f0; overflow: hidden; position: relative;
+    }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+    .video-card:hover .video-thumb img { transform: scale(1.05); }
+    .video-body { padding: 20px; }
+    .video-title { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+    .video-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 15px; height: 40px; overflow: hidden; }
+    .video-link {
+      font-size: 14px; font-weight: 800; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 5px;
+    }
+    .video-link:hover { text-decoration: underline; }
 
     /* Contact */
     .contact-wrapper{
@@ -205,8 +228,9 @@
       .why-grid{grid-template-columns:1fr}
       .history-inner{grid-template-columns:1fr; gap:20px; padding:20px;}
       .work-grid{grid-template-columns:1fr}
+      .video-grid{grid-template-columns:1fr}
       .contact-wrapper{grid-template-columns:1fr;padding:40px 20px;gap:26px}
-      .stat-num{font-size:20px} /* 모바일에서 폰트 줄임 */
+      .stat-num{font-size:20px}
     }
   </style>
 </head>
@@ -218,6 +242,7 @@
       <nav class="nav-menu">
         <a href="#about" data-kr="소개">About</a>
         <a href="#results" data-kr="성과">Results</a>
+        <a href="#highlights" data-kr="하이라이트">Highlights</a>
         <a href="#contact" data-kr="연락처">Contact</a>
       </nav>
       <div class="lang-switch">
@@ -248,7 +273,7 @@
       <div class="stats-row">
         <div class="stat-box">
           <div class="stat-num">56.7만+</div>
-          <div class="stat-label" data-kr="누적 조회수 (26.02 기준)" data-en="Total Views" data-cn="累计播放量">누적 조회수 (26.02 기준)</div>
+          <div class="stat-label" data-kr="유튜브 누적 조회수" data-en="YouTube Cumulative Views" data-cn="YouTube累计播放量">유튜브 누적 조회수</div>
         </div>
         <div class="stat-box">
           <div class="stat-num" style="color:var(--gold)">1,000만+</div>
@@ -268,35 +293,35 @@
 
   <section class="container" style="padding-bottom: 40px;">
     <div class="text-center" style="margin-bottom: 32px;">
-      <h2 style="font-size:32px; font-weight:900;" data-kr="Why Hire Me?" data-en="Why Hire Me?" data-cn="为什么选择我？">Why Hire Me?</h2>
+      <h2 style="font-size:32px; font-weight:900;" data-kr="Verified Competence" data-en="Verified Competence" data-cn="验证过的能力">Verified Competence</h2>
       <p style="color:var(--text-gray); font-weight:600;"
-         data-kr="검증된 교육·CS 역량으로 ‘신뢰’를 만듭니다."
-         data-en="Building trust with proven skills."
-         data-cn="用验证过的教育·CS能力建立信任。">
-        검증된 교육·CS 역량으로 ‘신뢰’를 만듭니다.
+         data-kr="쇼호스트의 기본기인 전달력과 검증된 설득력을 갖췄습니다."
+         data-en="Showhost delivery skills & proven persuasion."
+         data-cn="具备主播的基本传达力与验证过的说服力。">
+        쇼호스트의 기본기인 전달력과 검증된 설득력을 갖췄습니다.
       </p>
     </div>
 
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon"><i class="ri-mic-2-line"></i></div>
-        <div class="why-title" data-kr="아나운서급 전달력" data-en="Pro Delivery & Narration" data-cn="专业播音级传达力">아나운서급 전달력</div>
+        <div class="why-title" data-kr="쇼호스트의 전달력" data-en="Pro Delivery" data-cn="专业传达力">쇼호스트의 전달력</div>
         <div class="why-desc"
-             data-kr="1:1 한국어 발음/억양 교정 튜터링 경험.<br>공공기관 홍보 영상 나레이션 진행."
-             data-en="Korean voice tutoring experience.<br>Public sector promo narration."
-             data-cn="1:1韩语发音矫正辅导经验。<br>公共机构宣传视频旁白。">
-          1:1 한국어 발음/억양 교정 튜터링 경험.<br>공공기관 홍보 영상 나레이션 진행.
+             data-kr="청년의 날 메인 사회자 및 교내 아나운서 부장 출신.<br>정확한 발음과 딕션으로 정보를 꽂아줍니다."
+             data-en="Main Host for Youth Day & Campus Announcer.<br>Clear diction and delivery."
+             data-cn="青年节主主持人及校内播音部长出身。<br>用准确的发音传达信息。">
+          청년의 날 메인 사회자 및 교내 아나운서 부장 출신.<br>정확한 발음과 딕션으로 정보를 꽂아줍니다.
         </div>
       </div>
 
       <div class="why-card">
         <div class="why-icon"><i class="ri-customer-service-2-line"></i></div>
-        <div class="why-title" data-kr="검증된 CS 설득력" data-en="Certified CS & Persuasion" data-cn="验证过的CS说服力">검증된 CS 설득력</div>
+        <div class="why-title" data-kr="고객 분석 & 설득 기술" data-en="Customer Psychology" data-cn="顾客分析与说服">고객 분석 & 설득 기술</div>
         <div class="why-desc"
-             data-kr="롯데 손해보험 설계사 및 CS Leaders 자격.<br>단순 판매가 아닌, 고객 니즈 기반의 설득."
-             data-en="Insurance planner & CS Leaders certified.<br>Persuasion based on customer needs."
-             data-cn="乐天保险规划师及CS资格。<br>基于顾客需求的说服。">
-          롯데 손해보험 설계사 및 CS Leaders 자격.<br>단순 판매가 아닌, 고객 니즈 기반의 설득.
+             data-kr="CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다."
+             data-en="Certified in CS & Service Management.<br>Persuading based on customer psychology."
+             data-cn="持有CS及服务经营国家认证资格。<br>把握顾客心理，愉快说服。">
+          CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다.
         </div>
       </div>
 
@@ -315,12 +340,12 @@
     <div class="license-box">
       <div class="license-title">LICENSE & CERTIFICATION</div>
       <div class="badges">
-        <span class="badge"><i class="ri-award-fill"></i> 롯데 손해보험 설계사</span>
-        <span class="badge"><i class="ri-award-fill"></i> CS Leaders 관리사</span>
-        <span class="badge"><i class="ri-award-fill"></i> SMAT 서비스경영 1급</span>
-        <span class="badge"><i class="ri-award-fill"></i> OA 마스터</span>
-        <span class="badge"><i class="ri-award-fill"></i> 컴퓨터활용능력 2급</span>
-        <span class="badge"><i class="ri-cup-fill"></i> SCA 국제 바리스타</span>
+        <span class="badge" data-tooltip="금융상품 판매 및 고객 상담 자격"><i class="ri-award-fill"></i> 롯데 손해보험 설계사</span>
+        <span class="badge" data-tooltip="고객 만족 서비스 기획·실무 국가공인"><i class="ri-award-fill"></i> CS Leaders 관리사</span>
+        <span class="badge" data-tooltip="서비스 경영 실무 1급 (국가공인)"><i class="ri-award-fill"></i> SMAT 1급</span>
+        <span class="badge" data-tooltip="MS Office 실무 활용 능력"><i class="ri-award-fill"></i> OA 마스터</span>
+        <span class="badge" data-tooltip="데이터 관리 및 문서 작성"><i class="ri-award-fill"></i> 컴활 2급</span>
+        <span class="badge" data-tooltip="식음료(F&B) 전문 지식"><i class="ri-cup-fill"></i> SCA 국제 바리스타</span>
       </div>
     </div>
 
@@ -407,15 +432,15 @@
               <span class="work-cat">Field Sales</span>
               <span class="work-badge">1,000만+</span>
             </div>
-            <div class="work-title" data-kr="팝업 현장 판매 운영" data-en="Popup Sales Operation" data-cn="快闪现场销售运营">팝업 현장 판매 운영</div>
+            <div class="work-title" data-kr="전국구 팝업 현장 운영" data-en="Nationwide Popup Sales" data-cn="全国快闪销售运营">전국구 팝업 현장 운영</div>
             <div class="work-text"
-                 data-kr="고객 응대→비교 설명→결제 유도까지. 현장에서 ‘결정’을 만들어낸 경험."
-                 data-en="From questions to comparison to checkout—on-site decision flow."
-                 data-cn="从接待到对比说明再到付款，引导现场决策。">
-              고객 응대→비교 설명→결제 유도까지. 현장에서 ‘결정’을 만들어낸 경험.
+                 data-kr="코엑스·판교·수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원."
+                 data-en="Coex, Pangyo, Suwon locations. All-in-one on-site sales."
+                 data-cn="COEX·板桥·水原等全国活动。从接待到付款的一站式现场服务。">
+              코엑스·판교·수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원.
             </div>
-            <div class="work-meta" data-kr="판매 카테고리: 유아/생활/뷰티 (현장)" data-en="Categories: baby · lifestyle · beauty" data-cn="品类：母婴/生活/美妆（现场）">
-              판매 카테고리: 유아/생활/뷰티 (현장)
+            <div class="work-meta" data-kr="품목: 유아 화장품 · 장난감" data-en="Items: Baby Cosmetics & Toys" data-cn="品类：幼儿化妆品 · 玩具">
+              품목: 유아 화장품 · 장난감
             </div>
           </div>
         </div>
@@ -423,17 +448,68 @@
         <div class="work-card">
           <div class="work-body">
             <div class="work-top">
-              <span class="work-cat">Education</span>
-              <span class="work-badge">Delivery</span>
+              <span class="work-cat">Live Commerce</span>
+              <span class="work-badge">Spectrum</span>
             </div>
-            <div class="work-title" data-kr="발성·한국어 교육/보조강사" data-en="Voice & Korean Teaching" data-cn="发声与韩语教学">발성·한국어 교육/보조강사</div>
+            <div class="work-title" data-kr="라이브 커머스 진행" data-en="Live Commerce Experience" data-cn="直播带货经历">라이브 커머스 진행</div>
             <div class="work-text"
-                 data-kr="‘잘 들리게 말하기’ 훈련과 수업 경험. 전달력/설명력의 근거가 됩니다."
-                 data-en="Teaching experience that strengthens clarity and delivery."
-                 data-cn="教学经验让表达更清晰、更有说服力。">
-              ‘잘 들리게 말하기’ 훈련과 수업 경험. 전달력/설명력의 근거가 됩니다.
+                 data-kr="카테고리를 가리지 않는 소화력. 제품의 장점을 빠르게 파악해 세일즈 포인트로 연결합니다."
+                 data-en="Versatile across categories. Quickly grasping and selling product benefits."
+                 data-cn="不限品类的消化力。快速掌握产品优点并转化为卖点。">
+              카테고리를 가리지 않는 소화력. 제품의 장점을 빠르게 파악해 세일즈 포인트로 연결합니다.
             </div>
-            <div class="work-meta" data-kr="전주정보문화산업진흥원 보조강사 등" data-en="Assistant instructor experience" data-cn="含助教/讲师经历">전주정보문화산업진흥원 보조강사 등</div>
+            <div class="work-meta" data-kr="안마의자·골프패치·뷰티·가전 등" data-en="Massage chair, Beauty, Home appliances" data-cn="按摩椅·高尔夫贴·美妆·家电等">
+              안마의자·골프패치·뷰티·가전 등
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="highlights" class="section">
+    <div class="container">
+      <div class="text-center">
+        <h2 style="font-size:34px; font-weight:900;" data-kr="Highlights" data-en="Highlights" data-cn="精彩亮点">Highlights</h2>
+        <p style="color:var(--text-gray); margin-top:10px; font-weight:600;"
+           data-kr="가치관, 기획력, 협업 능력을 영상으로 확인하세요."
+           data-en="Check my values, planning, and collaboration skills."
+           data-cn="请通过视频确认我的价值观、策划力与合作能力。">
+          가치관, 기획력, 협업 능력을 영상으로 확인하세요.
+        </p>
+      </div>
+
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="vision_talk.jpg" alt="Vision Talk" onerror="this.src='https://via.placeholder.com/400x300'">
+          </div>
+          <div class="video-body">
+            <div class="video-title">Vision Talk</div>
+            <div class="video-desc">경기청년 사다리 발대식 스피치. "내가 왜 이 일을 하는지"에 대한 진심.</div>
+            <a class="video-link" href="#" target="_blank"><i class="ri-play-circle-line"></i> 영상 보기</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="mypicks.jpg" alt="DotoPick" onerror="this.src='https://via.placeholder.com/400x300'">
+          </div>
+          <div class="video-body">
+            <div class="video-title">DotoPick (기획력)</div>
+            <div class="video-desc">직접 제작한 여행 공유 시트와 큐레이션 콘텐츠. 정보 정리의 정석.</div>
+            <a class="video-link" href="https://www.youtube.com/@DotoRin33" target="_blank"><i class="ri-play-circle-line"></i> 채널 보기</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb">
+            <img src="collab_thumb.jpg" alt="Collaboration" onerror="this.src='https://via.placeholder.com/400x300'">
+          </div>
+          <div class="video-body">
+            <div class="video-title">Brand Collab</div>
+            <div class="video-desc">브랜드와 함께 만든 협업 콘텐츠. 자연스러운 제품 녹이기 스킬.</div>
+            <a class="video-link" href="#" target="_blank"><i class="ri-play-circle-line"></i> 영상 보기</a>
           </div>
         </div>
       </div>
@@ -515,7 +591,7 @@
       });
     }
 
-    // 토글 기능 (History Toggle)
+    // 토글 기능
     function toggleHistory() {
       const content = document.getElementById('historyContent');
       const icon = document.getElementById('toggleIcon');
