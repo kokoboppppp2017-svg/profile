@@ -3,235 +3,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>장혜린 | 쇼호스트 & 콘텐츠 디렉터</title>
-
+  <title>장혜린 | 매출을 만드는 콘텐츠 디렉터</title>
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
   <style>
-    :root{
-      --primary:#0f172a;
-      --accent:#2563eb;
-      --yellow:#facc15;
-      --bg-gray:#f8fafc;
-      --white:#ffffff;
-      --text-gray:#64748b;
-      --shadow:0 4px 20px rgba(0,0,0,0.08);
-      --border:#e2e8f0;
+    :root {
+      /* [Color Theme] 신뢰의 네이비 + 세일즈의 블루/골드 */
+      --primary: #0f172a;
+      --accent: #2563eb;
+      --gold: #d97706;
+      --bg-gray: #f8fafc;
+      --white: #ffffff;
+      --text-gray: #475569;
+      --shadow: 0 10px 40px rgba(0,0,0,0.08);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{
-      font-family:"Pretendard",sans-serif;
-      color:var(--primary);
-      line-height:1.6;
-      background:var(--bg-gray);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: "Pretendard", sans-serif;
+      color: var(--primary); line-height: 1.6; background: var(--bg-gray);
     }
-    a{text-decoration:none;color:inherit;transition:.25s;}
-    img{display:block;width:100%;height:auto;object-fit:cover;}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px;}
-    .section{padding:100px 0;}
-    .bg-white{background:var(--white);}
-    .text-center{text-align:center;}
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    img { display: block; width: 100%; height: auto; object-fit: cover; }
+    
+    .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 100px 0; }
+    .bg-white { background: var(--white); }
+    .text-center { text-align: center; }
 
     /* Header */
-    header{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(255,255,255,.95);
-      border-bottom:1px solid #eee;
-      backdrop-filter:blur(10px);
-      padding:15px 0;
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #e2e8f0; backdrop-filter: blur(10px);
+      padding: 16px 0;
     }
-    .nav-wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;}
-    .logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:.5px;}
-    .nav-menu{display:flex;gap:25px;font-weight:700;font-size:15px;white-space:nowrap;}
-    .nav-menu a:hover{color:var(--accent);}
-    .lang-switch{
-      display:flex;gap:5px;background:#f1f5f9;padding:4px;border-radius:20px;
-      flex-shrink:0;
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 22px; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; }
+    .nav-menu { display: flex; gap: 32px; font-weight: 700; font-size: 15px; }
+    .nav-menu a:hover { color: var(--accent); }
+    .lang-switch { display: flex; gap: 4px; background: #f1f5f9; padding: 4px; border-radius: 20px; }
+    .lang-btn {
+      border: none; background: none; padding: 6px 14px;
+      font-size: 12px; font-weight: 800; border-radius: 16px; cursor: pointer; color: var(--text-gray);
     }
-    .lang-btn{
-      border:none;background:none;padding:6px 14px;
-      font-size:12px;font-weight:800;border-radius:16px;cursor:pointer;color:var(--text-gray);
-    }
-    .lang-btn.active{background:var(--white);color:var(--primary);box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    .lang-btn.active { background: var(--primary); color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
 
-    /* HERO */
-    .hero{
-      display:flex;align-items:center;gap:50px;padding:100px 0;min-height:85vh;
+    /* HERO Section */
+    .hero {
+      display: flex; align-items: center; gap: 40px; padding: 80px 0 100px; min-height: 85vh;
     }
-    .hero-text{flex:1.2;}
-    .hero h1{
-      font-size:52px;line-height:1.2;margin-bottom:22px;letter-spacing:-1px;word-break:keep-all;
-      color:var(--primary);
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-block; background: #eff6ff; color: var(--accent);
+      padding: 8px 16px; border-radius: 30px; font-size: 14px; font-weight: 800; margin-bottom: 24px;
+      border: 1px solid #dbeafe;
     }
-    .hero p{
-      font-size:19px;color:var(--text-gray);margin-bottom:34px;word-break:keep-all;
+    .hero h1 {
+      font-size: 56px; line-height: 1.15; margin-bottom: 24px; letter-spacing: -1.5px; word-break: keep-all; color: var(--primary);
+    }
+    .hero p {
+      font-size: 19px; color: var(--text-gray); margin-bottom: 40px; word-break: keep-all; font-weight: 500;
+    }
+    
+    .stats-row { display: flex; gap: 16px; margin-top: 40px; }
+    .stat-box {
+      background: var(--white); padding: 24px 16px; border-radius: 18px;
+      box-shadow: var(--shadow); flex: 1; text-align: center; border: 1px solid #e2e8f0;
+    }
+    .stat-num { font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 4px; letter-spacing: -0.5px;}
+    .stat-label { font-size: 13px; color: var(--text-gray); font-weight: 700; word-break: keep-all; }
+
+    .hero-img-box { flex: 1; position: relative; }
+    .hero-img-box img {
+      border-radius: 30px; box-shadow: 30px 30px 0 #eff6ff;
+      aspect-ratio: 3/4; filter: contrast(1.02); width: 100%;
     }
 
-    .stats-row{display:flex;gap:20px;margin-top:34px;}
-    .stat-box{
-      background:var(--white);padding:20px;border-radius:16px;
-      box-shadow:var(--shadow);flex:1;text-align:center;border:1px solid #f1f5f9;
+    /* [NEW] WHY ME Section (징검다리 섹션) */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+      margin-top: 20px;
     }
-    .stat-num{font-size:28px;font-weight:900;color:var(--primary);margin-bottom:6px;}
-    .stat-label{font-size:14px;color:var(--text-gray);font-weight:600;}
+    .why-card {
+      background: var(--white); padding: 40px 30px; border-radius: 24px;
+      border: 1px solid #e2e8f0; transition: 0.3s;
+    }
+    .why-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: var(--shadow); }
+    .why-icon {
+      font-size: 36px; color: var(--accent); margin-bottom: 20px;
+      background: #eff6ff; width: 70px; height: 70px; border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+    .why-desc { font-size: 15px; color: var(--text-gray); word-break: keep-all; }
 
-    /* Hero image (optional) */
-    .hero-img-box{flex:1;position:relative;}
-    .hero-img-box img{
-      border-radius:24px;box-shadow:20px 20px 0 #dfe7ef;aspect-ratio:3/4;
-    }
-
-    /* Section Title */
-    .section-title{
-      font-size:32px;font-weight:900;margin-bottom:10px;
-    }
-    .section-sub{
-      color:var(--text-gray);
-    }
 
     /* Portfolio Cards */
-    .pf-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:25px;margin-top:50px;
+    .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px; }
+    .pf-card {
+      background: var(--white); border-radius: 20px; overflow: hidden;
+      transition: 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;
     }
-    .pf-card{
-      background:var(--white);border-radius:20px;overflow:hidden;
-      transition:.3s;box-shadow:var(--shadow);border:1px solid #f1f5f9;
+    .pf-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    .pf-thumb { height: 240px; background: #e2e8f0; overflow: hidden; position: relative; }
+    .pf-thumb img { width: 100%; height: 100%; transition: 0.5s; }
+    .pf-card:hover .pf-thumb img { transform: scale(1.05); }
+    
+    .result-badge {
+      position: absolute; top: 15px; right: 15px;
+      background: var(--gold); color: white; padding: 6px 12px;
+      border-radius: 8px; font-size: 12px; font-weight: 800;
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.4);
     }
-    .pf-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
-    .pf-thumb{
-      height:210px;
-      background:linear-gradient(135deg,#eff6ff,#ffffff);
-      border-bottom:1px solid #eef2f7;
-      display:flex;align-items:center;justify-content:center;
-    }
-    .pf-icon{
-      width:64px;height:64px;border-radius:18px;
-      display:flex;align-items:center;justify-content:center;
-      background:rgba(37,99,235,.10);
-      border:1px solid rgba(37,99,235,.15);
-    }
-    .pf-icon i{font-size:30px;color:var(--accent);}
 
-    .pf-body{padding:24px;}
-    .pf-cat{color:var(--accent);font-size:13px;font-weight:800;margin-bottom:8px;display:block;}
-    .pf-title{font-size:20px;font-weight:900;margin-bottom:10px;line-height:1.3;}
-    .pf-text{font-size:15px;color:var(--text-gray);word-break:keep-all;}
+    .pf-body { padding: 30px; }
+    .pf-cat { color: var(--accent); font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .pf-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
+    .pf-text { font-size: 15px; color: var(--text-gray); word-break: keep-all; }
 
-    /* Presence (image grid - no captions/labels) */
-    .daily-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-      grid-auto-rows:200px;
-      margin-top:40px;
+    /* Visual Spectrum (Gallery) */
+    .daily-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+      grid-auto-rows: 240px;
     }
-    .daily-item{
-      border-radius:14px;overflow:hidden;position:relative;background:#e5e7eb;
-      border:1px solid #edf2f7;
+    .daily-item { border-radius: 16px; overflow: hidden; position: relative; background: #e2e8f0; }
+    .daily-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+    .daily-item:hover img { transform: scale(1.08); }
+    .daily-item.large { grid-column: span 2; grid-row: span 2; }
+    .daily-item.wide { grid-column: span 2; }
+    .daily-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      display: flex; align-items: flex-end; padding: 20px; opacity: 0; transition: 0.3s;
     }
-    .daily-item img{width:100%;height:100%;object-fit:cover;transition:.3s;}
-    .daily-item:hover img{transform:scale(1.06);}
-    .daily-item.large{grid-column:span 2;grid-row:span 2;}
-    .daily-item.wide{grid-column:span 2;}
+    .daily-item:hover .daily-overlay { opacity: 1; }
+    .daily-tag { color: white; font-weight: 700; font-size: 14px; }
 
     /* Contact Section */
-    .contact-container{
-      display:grid;grid-template-columns:1fr 1fr;gap:40px;
-      background:var(--white);border-radius:24px;padding:50px;
-      box-shadow:var(--shadow);margin-top:40px;border:1px solid #f1f5f9;
+    .contact-container {
+      background: var(--white); border-radius: 30px; padding: 70px 40px;
+      box-shadow: var(--shadow); text-align: center;
+      max-width: 900px; margin: 0 auto; border: 1px solid #e2e8f0;
     }
-    .contact-left h3{font-size:24px;font-weight:900;margin-bottom:10px;}
-    .contact-left p{color:var(--text-gray);margin-bottom:26px;}
+    .kakao-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fee500; color: #3c1e1e;
+      padding: 18px 40px; border-radius: 50px;
+      font-weight: 800; font-size: 20px;
+      transition: 0.3s; box-shadow: 0 10px 20px rgba(254, 229, 0, 0.3); margin-top: 30px;
+    }
+    .kakao-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(254, 229, 0, 0.4); }
 
-    .kakao-btn{
-      display:inline-flex;align-items:center;gap:10px;
-      background:#fee500;color:#3c1e1e;
-      padding:16px 18px;border-radius:12px;
-      font-weight:900;font-size:17px;width:100%;justify-content:center;
-      transition:.25s;box-shadow:0 4px 10px rgba(254,229,0,.35);
+    .sns-icons { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+    .sns-item {
+      width: 50px; height: 50px; border-radius: 50%; background: #f1f5f9;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: var(--text-gray); transition: 0.3s;
     }
-    .kakao-btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(254,229,0,.45);}
-
-    .contact-right{display:flex;flex-direction:column;gap:15px;}
-    .channel-link{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:15px 18px;border-radius:12px;
-      background:#f8fafc;border:1px solid var(--border);
-      transition:.2s;
-    }
-    .channel-link:hover{background:#f1f5f9;border-color:#cbd5e1;}
-    .ch-info{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--primary);}
-    .ch-desc{font-size:13px;color:var(--text-gray);font-weight:600;}
-
-    .pdf-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      margin-top:16px;padding:12px;width:100%;border-radius:12px;
-      border:1px dashed #cbd5e1;color:var(--text-gray);font-weight:700;cursor:pointer;
-      background:#fbfdff;
-    }
-    .pdf-btn:hover{border-color:var(--accent);color:var(--accent);background:#eff6ff;}
-
-    /* Floating Contact (mobile jump) */
-    .floating-contact{
-      position:fixed;right:16px;bottom:16px;z-index:2000;
-      display:none;align-items:center;gap:8px;
-      padding:12px 14px;border-radius:999px;
-      background:var(--accent);color:#fff;font-weight:900;
-      box-shadow:0 10px 25px rgba(37,99,235,.35);
-    }
-    .floating-contact:hover{transform:translateY(-2px);}
+    .sns-item:hover { background: var(--primary); color: white; transform: rotate(10deg); }
 
     /* Responsive */
-    @media (max-width: 900px){
-      .hero{flex-direction:column-reverse;text-align:center;padding-top:50px;gap:26px;min-height:auto;}
-      .hero h1{font-size:38px;}
-      .hero-img-box{width:100%;}
-      .contact-container{grid-template-columns:1fr;padding:30px;}
-      .nav-menu{display:none;}
-      .daily-grid{grid-template-columns:2fr 2fr;}
-      .floating-contact{display:inline-flex;}
-    }
-
-    /* Mobile fine-tuning */
-    @media (max-width: 600px){
-      header{padding:10px 0;}
-      .logo{font-size:18px;}
-      .lang-switch{transform:scale(.95);transform-origin:right center;}
-
-      .hero{padding:60px 0;}
-      .hero h1{font-size:32px;line-height:1.15;margin-bottom:16px;}
-      .hero p{font-size:16px;margin-bottom:22px;}
-
-      .stats-row{gap:12px;margin-top:22px;}
-      .stat-box{padding:14px;border-radius:14px;}
-      .stat-num{font-size:22px;}
-      .stat-label{font-size:12px;}
-
-      .section{padding:70px 0;}
-      .pf-thumb{height:190px;}
-      .pf-title{font-size:18px;}
-      .pf-text{font-size:13.5px;line-height:1.55;}
+    @media (max-width: 900px) {
+      .hero { flex-direction: column-reverse; padding-top: 60px; gap: 40px; text-align: center; }
+      .hero h1 { font-size: 40px; }
+      .hero-img-box { width: 100%; aspect-ratio: 1/1; }
+      .nav-menu { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .daily-grid { grid-template-columns: 2fr 2fr; }
+      .stat-num { font-size: 22px; }
     }
   </style>
 </head>
-
 <body>
 
   <header>
     <div class="container nav-wrap">
       <div class="logo">JANG HYE RIN</div>
-
       <nav class="nav-menu">
-        <a href="#portfolio" data-kr="포트폴리오" data-en="Portfolio" data-cn="作品">포트폴리오</a>
-        <a href="#presence" data-kr="프레즌스" data-en="Presence" data-cn="形象">프레즌스</a>
-        <a href="#contact" data-kr="연락처" data-en="Contact" data-cn="联系">연락처</a>
+        <a href="#about" data-kr="소개">About</a>
+        <a href="#portfolio" data-kr="성과">Results</a>
+        <a href="#gallery" data-kr="스펙트럼">Spectrum</a>
+        <a href="#contact" data-kr="연락처">Contact</a>
       </nav>
-
       <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('kr')">KR</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -240,271 +197,179 @@
     </div>
   </header>
 
-  <!-- Floating contact button (mobile) -->
-  <a href="#contact" class="floating-contact">
-    <i class="ri-chat-3-fill"></i>
-    <span data-kr="연락하기" data-en="Contact" data-cn="联系我">연락하기</span>
-  </a>
-
-  <section class="hero container">
+  <section id="about" class="hero container">
     <div class="hero-text">
-      <h1
-        data-kr="실시간 질문을<br>‘구매 결정’으로 바꿉니다"
-        data-en="Turning Live Questions<br>into Purchase Decisions"
-        data-cn="将实时提问转化为<br>购买决定"
-      >
-        실시간 질문을<br>‘구매 결정’으로 바꿉니다
+      <span class="hero-badge" data-kr="Revenue Maker" data-en="Revenue Maker" data-cn="Revenue Maker">Revenue Maker</span>
+      
+      <h1 data-kr="말만 잘하는 쇼호스트?<br>아니요, <span style='color:#2563eb'>숫자</span>로 증명합니다."
+          data-en="Just a talker?<br>No, I prove with <span style='color:#2563eb'>Numbers.</span>"
+          data-cn="只是口才好？<br>不，我用<span style='color:#2563eb'>数字</span>证明。">
+        말만 잘하는 쇼호스트?<br>아니요, <span style="color:#2563eb">숫자</span>로 증명합니다.
       </h1>
-
-      <p
-        data-kr="콘텐츠·진행·세일즈 커뮤니케이션을 한 번에.<br>‘설명’이 아니라, <b>결정을 돕는 전달</b>을 설계합니다."
-        data-en="Content, Hosting, Sales Communication—All in One.<br>Designing delivery that helps decisions, not just explanations."
-        data-cn="内容、主持、销售沟通一站式服务。<br>设计有助于决策的传达，而不仅仅是说明。"
-      >
+      
+      <p data-kr="콘텐츠·진행·세일즈 커뮤니케이션을 한 번에.<br>설명이 아니라, <b>결정을 돕는 전달</b>을 설계합니다."
+         data-en="Content, Hosting, Sales Communication—All in One.<br>Designing delivery that helps decisions."
+         data-cn="内容、主持、销售沟通一站式服务。<br>设计有助于决策的传达。">
         콘텐츠·진행·세일즈 커뮤니케이션을 한 번에.<br>
-        ‘설명’이 아니라, <b>결정을 돕는 전달</b>을 설계합니다.
+        설명이 아니라, <b>결정을 돕는 전달</b>을 설계합니다.
       </p>
 
       <div class="stats-row">
         <div class="stat-box">
+          <div class="stat-num">56.7만+</div>
+          <div class="stat-label" data-kr="누적 조회수 (26.02 기준)" data-en="Total Views" data-cn="累计播放量">누적 조회수 (26.02 기준)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:#d97706">1,000만+</div>
+          <div class="stat-label" data-kr="팝업스토어 누적 매출" data-en="Total Sales (Popup)" data-cn="展会累计销售额">팝업스토어 누적 매출</div>
+        </div>
+        <div class="stat-box">
           <div class="stat-num">200만+</div>
-          <div class="stat-label"
-               data-kr="베이비페어 1일 현장판매"
-               data-en="Baby Fair 1-day Sales"
-               data-cn="婴童展 单日现场销售">
-            베이비페어 1일 현장판매
-          </div>
-        </div>
-
-        <div class="stat-box">
-          <div class="stat-num">1,000만+</div>
-          <div class="stat-label"
-               data-kr="팝업 누적 매출"
-               data-en="Popup Total Sales"
-               data-cn="快闪 累计销售额">
-            팝업 누적 매출
-          </div>
-        </div>
-
-        <div class="stat-box">
-          <div class="stat-num" style="font-size:22px;">All-in-One</div>
-          <div class="stat-label"
-               data-kr="콘텐츠·진행·세일즈"
-               data-en="Content · Hosting · Sales"
-               data-cn="内容·主持·销售">
-            콘텐츠·진행·세일즈
-          </div>
+          <div class="stat-label" data-kr="베이비페어 단일 매출" data-en="Single Event Sales" data-cn="单场活动销售额">베이비페어 단일 매출</div>
         </div>
       </div>
     </div>
 
     <div class="hero-img-box">
-      <img src="main_profile.jpg" alt="장혜린 프로필" onerror="this.src='https://via.placeholder.com/500x700'">
+      <img src="main_profile.jpg" alt="장혜린 프로필" onerror="this.src='https://via.placeholder.com/600x800'">
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
+  <section class="container" style="padding-bottom: 60px;">
+    <div class="text-center" style="margin-bottom: 40px;">
+      <h2 style="font-size:32px; font-weight:900;" data-kr="Why Hire Me?" data-en="Why Hire Me?" data-cn="为什么选择我？">Why Hire Me?</h2>
+      <p style="color:var(--text-gray);" data-kr="단순 진행자가 아닙니다. 비용을 아껴주는 올인원 파트너입니다." data-en="Not just a host. An All-in-one partner." data-cn="不仅仅是主持人，而是为您节省成本的全能合作伙伴。">단순 진행자가 아닙니다. 비용을 아껴주는 올인원 파트너입니다.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><i class="ri-lightbulb-flash-line"></i></div>
+        <div class="why-title" data-kr="PD가 필요 없는 기획" data-en="Planning (No PD)" data-cn="无需PD的策划">PD가 필요 없는 기획</div>
+        <div class="why-desc" data-kr="56만 뷰를 만든 감각으로, 팔리는 소구점을 직접 찾아냅니다." data-en="Finding selling points directly with proven viral sense." data-cn="以创造56万播放量的感觉，直接寻找卖点。">56만 뷰를 만든 감각으로, 팔리는 소구점을 직접 찾아냅니다.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="ri-mic-2-line"></i></div>
+        <div class="why-title" data-kr="대본 없는 돌발 대처" data-en="Improvisation" data-cn="突发状况应对">대본 없는 돌발 대처</div>
+        <div class="why-desc" data-kr="방송 사고? 오히려 기회입니다. 라이브의 묘미를 살리는 순발력." data-en="Turning accidents into opportunities with quick wit." data-cn="直播事故？反而是机会。救活直播妙趣的爆发力。">방송 사고? 오히려 기회입니다. 라이브의 묘미를 살리는 순발력.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><i class="ri-global-line"></i></div>
+        <div class="why-title" data-kr="글로벌 확장성" data-en="Global Expansion" data-cn="全球扩展性">글로벌 확장성</div>
+        <div class="why-desc" data-kr="한국 시장은 좁습니다. 중화권/글로벌 고객까지 커버합니다." data-en="Covering not just KR, but Global/Chinese markets." data-cn="不局限于韩国市场，覆盖中华圈/全球顾客。">한국 시장은 좁습니다. 중화권/글로벌 고객까지 커버합니다.</div>
+      </div>
+    </div>
+  </section>
+
   <section id="portfolio" class="section bg-white">
     <div class="container">
       <div class="text-center">
-        <h2 class="section-title" data-kr="Featured Works" data-en="Featured Works" data-cn="精选作品">Featured Works</h2>
-        <p class="section-sub"
-           data-kr="브랜드명 없이도 ‘역할’과 ‘결과’로 증명합니다."
-           data-en="Proven by roles and results—no brand names needed."
-           data-cn="不提品牌名，也能用角色与结果证明。">
-          브랜드명 없이도 ‘역할’과 ‘결과’로 증명합니다.
-        </p>
+        <h2 style="font-size:36px; font-weight:900;" data-kr="Featured Works" data-en="Featured Works" data-cn="精选作品">Featured Works</h2>
+        <p style="color:var(--text-gray); margin-top:10px;" data-kr="위의 숫자들을 만들어낸 실제 프로젝트입니다." data-en="Actual projects behind the numbers." data-cn="创造上述数字的实际项目。">위의 숫자들을 만들어낸 실제 프로젝트입니다.</p>
       </div>
 
       <div class="pf-grid">
-
-        <!-- Baby Fair (Baby cosmetics) -->
         <div class="pf-card">
-          <div class="pf-thumb" aria-hidden="true">
-            <div class="pf-icon"><i class="ri-store-2-line"></i></div>
+          <div class="pf-thumb">
+            <img src="sales_photo.jpg" alt="Sales" onerror="this.src='https://via.placeholder.com/400x300'">
+            <div class="result-badge">SOLD OUT</div>
           </div>
           <div class="pf-body">
-            <span class="pf-cat">Baby Fair Sales</span>
-            <div class="pf-title"
-                 data-kr="베이비페어 현장판매"
-                 data-en="Baby Fair Sales"
-                 data-cn="婴童展现场销售">
-              베이비페어 현장판매
-            </div>
-            <div class="pf-text"
-                 data-kr="유아 화장품 부스 운영 · 1일 매출 200만+"
-                 data-en="Baby cosmetics booth · 2M+ KRW in a day"
-                 data-cn="婴幼儿护肤品展位 · 单日销售200万+韩元">
-              유아 화장품 부스 운영 · 1일 매출 200만+
+            <span class="pf-cat">Sales Performance</span>
+            <div class="pf-title" data-kr="오프라인 재고 완판" data-en="Total Sell-out" data-cn="线下库存售罄">오프라인 재고 완판</div>
+            <div class="pf-text" data-kr="지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 준비된 현장 물량을 모두 소진시킨 실전 세일즈." data-en="Hooking comments stopping passersby in 3s. Sold out all prepared stock." data-cn="3秒留住过路客的钩子话术。售罄所有准备的现场库存。">
+              지나가는 고객을 3초 만에 멈추게 하는 후킹 멘트. 준비된 현장 물량을 모두 소진시킨 실전 세일즈.
             </div>
           </div>
         </div>
 
-        <!-- Popup (sensory play) -->
         <div class="pf-card">
-          <div class="pf-thumb" aria-hidden="true">
-            <div class="pf-icon"><i class="ri-ticket-2-line"></i></div>
+          <div class="pf-thumb">
+            <img src="youtube_photo.jpg" alt="Content" onerror="this.src='https://via.placeholder.com/400x300'">
+            <div class="result-badge">567K+ VIEWS</div>
           </div>
           <div class="pf-body">
-            <span class="pf-cat">Popup Sales</span>
-            <div class="pf-title"
-                 data-kr="팝업 현장 응대"
-                 data-en="Popup Sales"
-                 data-cn="快闪现场应对">
-              팝업 현장 응대
-            </div>
-            <div class="pf-text"
-                 data-kr="유아 오감놀이 제품 · 누적 매출 1,000만+"
-                 data-en="Kids sensory play product · 10M+ KRW total"
-                 data-cn="幼儿感官玩具/体验产品 · 累计1000万+韩元">
-              유아 오감놀이 제품 · 누적 매출 1,000만+
+            <span class="pf-cat">Content Power</span>
+            <div class="pf-title" data-kr="누적 조회수 56만 회" data-en="560K+ Total Views" data-cn="累计播放量56万">누적 조회수 56만 회</div>
+            <div class="pf-text" data-kr="단순 기록이 아닙니다. 고객이 무엇을 클릭하는지 아는 '데이터 기반'의 기획력입니다." data-en="Data-driven planning knowing what customers click." data-cn="绝非单纯记录。知道顾客点击什么的“基于数据”的策划力。">
+              단순 기록이 아닙니다. 고객이 무엇을 클릭하는지 아는 '데이터 기반'의 기획력입니다.
             </div>
           </div>
         </div>
 
-        <!-- Global Planning -->
         <div class="pf-card">
-          <div class="pf-thumb" aria-hidden="true">
-            <div class="pf-icon"><i class="ri-global-line"></i></div>
+          <div class="pf-thumb">
+            <img src="mc_photo.jpg" alt="Live" onerror="this.src='https://via.placeholder.com/400x300'">
+            <div class="result-badge">LIVE SKILL</div>
           </div>
           <div class="pf-body">
-            <span class="pf-cat">Global Planning</span>
-            <div class="pf-title"
-                 data-kr="글로벌 타깃 기획"
-                 data-en="Global Planning"
-                 data-cn="全球策划">
-              글로벌 타깃 기획
-            </div>
-            <div class="pf-text"
-                 data-kr="다국어 자막·구성 최적화 경험"
-                 data-en="Multilingual captions & structure optimization"
-                 data-cn="多语言字幕与结构优化经验">
-              다국어 자막·구성 최적화 경험
+            <span class="pf-cat">Live Communication</span>
+            <div class="pf-title" data-kr="이탈을 막는 라이브" data-en="High Retention Hosting" data-cn="防止流失的直播主持">이탈을 막는 라이브</div>
+            <div class="pf-text" data-kr="대본에 없는 돌발 상황도 세일즈 포인트로 연결. 시청 지속 시간을 늘리는 소통 스킬." data-en="Turning unexpected moments into sales points. Retention skills." data-cn="将突发状况转化为销售点。增加观看时长的沟通技巧。">
+              대본에 없는 돌발 상황도 세일즈 포인트로 연결. 시청 지속 시간을 늘리는 소통 스킬.
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- PRESENCE -->
-  <section id="presence" class="section">
+  <section id="gallery" class="section">
     <div class="container">
-      <div class="text-center">
-        <h2 class="section-title"
-            data-kr="On-site & Presence"
-            data-en="On-site & Presence"
-            data-cn="现场与形象">
-          On-site & Presence
-        </h2>
-        <p class="section-sub"
-           data-kr="사진은 ‘무드’만 보여줍니다."
-           data-en="Photos show vibe."
-           data-cn="照片只展示氛围。">
-          사진은 ‘무드’만 보여줍니다.
-        </p>
+      <div class="text-center" style="margin-bottom:50px;">
+        <h2 style="font-size:36px; font-weight:900; margin-bottom:10px;" data-kr="Visual Spectrum" data-en="Visual Spectrum" data-cn="视觉光谱">Visual Spectrum</h2>
+        <p style="color:var(--text-gray);" data-kr="브랜드가 원하는 페르소나를 완벽하게 입습니다." data-en="Wearing the Brand's Persona." data-cn="穿上品牌的面具。">브랜드가 원하는 페르소나를 완벽하게 입습니다.</p>
       </div>
-
+      
       <div class="daily-grid">
-        <div class="daily-item large"><img src="presence_1.jpg" alt="presence 1" onerror="this.src='https://via.placeholder.com/600x600'"></div>
-        <div class="daily-item"><img src="presence_2.jpg" alt="presence 2" onerror="this.src='https://via.placeholder.com/300x300'"></div>
-        <div class="daily-item"><img src="presence_3.jpg" alt="presence 3" onerror="this.src='https://via.placeholder.com/300x300'"></div>
-        <div class="daily-item wide"><img src="presence_4.jpg" alt="presence 4" onerror="this.src='https://via.placeholder.com/600x300'"></div>
-        <div class="daily-item"><img src="presence_5.jpg" alt="presence 5" onerror="this.src='https://via.placeholder.com/300x300'"></div>
-        <div class="daily-item"><img src="presence_6.jpg" alt="presence 6" onerror="this.src='https://via.placeholder.com/300x300'"></div>
+        <div class="daily-item large">
+          <img src="hanbok.jpg" alt="한복" onerror="this.src='https://via.placeholder.com/400x400'">
+          <div class="daily-overlay"><span class="daily-tag">#Elegance</span></div>
+        </div>
+        <div class="daily-item">
+          <img src="travel.jpg" alt="여행" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="daily-overlay"><span class="daily-tag">#Travel</span></div>
+        </div>
+        <div class="daily-item">
+          <img src="food.jpg" alt="음식" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="daily-overlay"><span class="daily-tag">#Mukbang</span></div>
+        </div>
+        <div class="daily-item wide">
+          <img src="casual.jpg" alt="캐주얼" onerror="this.src='https://via.placeholder.com/400x200'">
+          <div class="daily-overlay"><span class="daily-tag">#Casual & Trendy</span></div>
+        </div>
+        <div class="daily-item">
+          <img src="smile.jpg" alt="미소" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="daily-overlay"><span class="daily-tag">#Friendly</span></div>
+        </div>
+        <div class="daily-item">
+          <img src="work.jpg" alt="작업" onerror="this.src='https://via.placeholder.com/200x200'">
+          <div class="daily-overlay"><span class="daily-tag">#Professional</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="section bg-white">
     <div class="container">
-      <div class="text-center">
-        <h2 style="font-size:36px;font-weight:900;color:var(--primary);"
-            data-kr="Ready to Decide?"
-            data-en="Ready to Decide?"
-            data-cn="准备好做决定了吗？">
-          Ready to Decide?
-        </h2>
-        <p style="color:var(--text-gray);margin-top:10px;"
-           data-kr="프로젝트/채용/콜라보 문의는 아래로 바로 주세요."
-           data-en="For hiring, projects, or collabs—message me below."
-           data-cn="招聘、项目、合作请直接联系我。">
-          프로젝트/채용/콜라보 문의는 아래로 바로 주세요.
-        </p>
-      </div>
-
       <div class="contact-container">
-        <div class="contact-left">
-          <h3 data-kr="오픈카톡이 가장 빠릅니다" data-en="Open Kakao is Fastest" data-cn="Open Kakao 最快">
-            오픈카톡이 가장 빠릅니다
-          </h3>
-          <p data-kr="가볍게 일정/예산/목적만 남겨주셔도 됩니다."
-             data-en="Just leave your schedule, budget, and goal—briefly."
-             data-cn="简单写下时间、预算、目的即可。">
-            가볍게 일정/예산/목적만 남겨주셔도 됩니다.
-          </p>
+        <h2 style="font-size:36px; font-weight:900; color:var(--primary);" data-kr="Ready to Sell?" data-en="Ready to Sell?" data-cn="准备好大卖了吗？">Ready to Sell?</h2>
+        <p style="font-size:18px; color:var(--text-gray); margin-top:10px;" data-kr="매출을 고민하신다면, 지금 바로 제안하세요.<br>가장 빠르게 응답하겠습니다." data-en="If you care about revenue, propose now." data-cn="如果您为销售额烦恼，请立即提案。">
+          매출을 고민하신다면, 지금 바로 제안하세요.<br>가장 빠르게 응답하겠습니다.
+        </p>
+        
+        <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="kakao-btn">
+          <i class="ri-kakao-talk-fill"></i> <span>장혜린 섭외하기 (Click)</span>
+        </a>
 
-          <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="kakao-btn">
-            <i class="ri-kakao-talk-fill"></i>
-            <span data-kr="1:1 채팅 바로가기" data-en="Open 1:1 Chat" data-cn="打开1对1聊天">1:1 채팅 바로가기</span>
-          </a>
-
-          <div class="pdf-btn" onclick="alert('PDF 준비중입니다.')">
-            <i class="ri-file-download-line"></i>
-            <span data-kr="이력서(PDF) 다운로드 (준비중)" data-en="Download Resume (Coming Soon)" data-cn="下载简历 (准备中)">
-              이력서(PDF) 다운로드 (준비중)
-            </span>
-          </div>
-
-          <div style="margin-top:18px;color:var(--text-gray);font-size:14px;">
-            <i class="ri-mail-send-line" style="margin-right:5px;"></i>
-            dotorin33@gmail.com
-          </div>
+        <div class="sns-icons">
+          <a href="https://www.youtube.com/@DotoRin33" target="_blank" class="sns-item" title="YouTube"><i class="ri-youtube-fill"></i></a>
+          <a href="https://instagram.com/livelyrin" target="_blank" class="sns-item" title="Instagram"><i class="ri-instagram-fill"></i></a>
+          <a href="mailto:dotorin33@gmail.com" class="sns-item" title="Email"><i class="ri-mail-send-fill"></i></a>
         </div>
-
-        <div class="contact-right">
-          <a href="https://www.youtube.com/@DotoRin33" target="_blank" class="channel-link">
-            <div class="ch-info">
-              <i class="ri-youtube-fill" style="color:#ff0000;font-size:24px;"></i> YouTube
-            </div>
-            <span class="ch-desc"
-                  data-kr="콘텐츠 & 기획"
-                  data-en="Content & Planning"
-                  data-cn="内容与策划">
-              콘텐츠 & 기획
-            </span>
-          </a>
-
-          <a href="https://instagram.com/livelyrin" target="_blank" class="channel-link">
-            <div class="ch-info">
-              <i class="ri-instagram-fill" style="color:#bc1888;font-size:24px;"></i> Instagram
-            </div>
-            <span class="ch-desc"
-                  data-kr="사진 포트폴리오"
-                  data-en="Photo Portfolio"
-                  data-cn="照片作品集">
-              사진 포트폴리오
-            </span>
-          </a>
-
-          <a href="#" class="channel-link">
-            <div class="ch-info">
-              <i class="ri-pencil-fill" style="color:#00C73C;font-size:24px;"></i> Blog
-            </div>
-            <span class="ch-desc"
-                  data-kr="리뷰 & 아카이빙"
-                  data-en="Reviews & Archive"
-                  data-cn="测评与归档">
-              리뷰 & 아카이빙
-            </span>
-          </a>
+        
+        <div style="margin-top:40px; font-size:13px; color:#ccc;">
+          © 2026 JANG HYE RIN. All rights reserved.
         </div>
-      </div>
-
-      <div class="text-center" style="margin-top:60px;font-size:13px;color:#cbd5e1;">
-        © 2026 JANG HYE RIN. All rights reserved.
       </div>
     </div>
   </section>
@@ -513,9 +378,8 @@
     function setLang(lang) {
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+        if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
       });
-
       document.querySelectorAll(`[data-${lang}]`).forEach(el => {
         el.innerHTML = el.getAttribute(`data-${lang}`);
       });
