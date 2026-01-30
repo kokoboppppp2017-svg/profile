@@ -72,7 +72,6 @@
       background:var(--white);padding:22px 16px;border-radius:18px;
       box-shadow:var(--shadow);flex:1;text-align:center;border:1px solid var(--border)
     }
-    /* 모바일 깨짐 방지: 줄바꿈 금지 */
     .stat-num{font-size:26px;font-weight:900;color:var(--accent);margin-bottom:6px;letter-spacing:-.5px; white-space:nowrap;}
     .stat-label{font-size:13px;color:var(--text-gray);font-weight:700;word-break:keep-all}
 
@@ -97,7 +96,7 @@
       display:flex;align-items:center;justify-content:center
     }
     .why-title{font-size:19px;font-weight:900;margin-bottom:10px; word-break: keep-all;}
-    .why-desc{font-size:15px;color:var(--text-gray); line-height: 1.6;}
+    .why-desc{font-size:15px;color:var(--text-gray); line-height: 1.6; word-break: keep-all;}
 
     /* Tooltip Styles for Badges */
     .license-box { margin-top: 40px; text-align: center; }
@@ -113,7 +112,6 @@
     .badge i { color: var(--gold); }
     .badge:hover { border-color: var(--accent); color: var(--accent); background: #eff6ff; }
 
-    /* Tooltip text */
     .badge::after {
       content: attr(data-tooltip);
       position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
@@ -162,7 +160,7 @@
     .work-cat{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.8px;text-transform:uppercase}
     .work-badge{font-size:12px;font-weight:900;background:var(--gold);color:#fff;padding:4px 8px;border-radius:6px}
     .work-title{font-size:20px;font-weight:900;margin-bottom:10px;line-height:1.3;word-break:keep-all}
-    .work-text{font-size:15px;color:var(--text-gray);font-weight:500; margin-bottom: 15px; line-height: 1.6;}
+    .work-text{font-size:15px;color:var(--text-gray);font-weight:500; margin-bottom: 15px; line-height: 1.6; word-break: keep-all;}
     .work-meta{font-size:13px;color:#64748b;font-weight:700; background:#f8fafc; padding:10px; border-radius:8px;}
 
     /* Highlights (Video) */
@@ -172,14 +170,32 @@
       transition: 0.3s;
     }
     .video-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    
     .video-thumb{
       height: 160px; background: #e2e8f0; overflow: hidden; position: relative;
     }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+    
+    /* [NEW] Slideshow Styles for DotoPick */
+    .slideshow .slide-img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0; transition: opacity 1s ease-in-out;
+    }
+    /* 애니메이션 로직: 2장의 이미지가 6초 주기로 페이드 인/아웃 */
+    @keyframes fadeEffect1 {
+      0% { opacity: 1; } 45% { opacity: 1; } 55% { opacity: 0; } 90% { opacity: 0; } 100% { opacity: 1; }
+    }
+    @keyframes fadeEffect2 {
+      0% { opacity: 0; } 45% { opacity: 0; } 55% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; }
+    }
+    .slideshow .img-1 { animation: fadeEffect1 6s infinite; }
+    .slideshow .img-2 { animation: fadeEffect2 6s infinite; }
+
     .video-card:hover .video-thumb img { transform: scale(1.05); }
     .video-body { padding: 20px; }
     .video-title { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
-    .video-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 15px; height: 40px; overflow: hidden; }
+    /* 줄바꿈을 위해 white-space 관련 속성 해제 및 높이 자동 */
+    .video-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; word-break: keep-all;}
     .video-link {
       font-size: 14px; font-weight: 800; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 5px;
     }
@@ -306,12 +322,12 @@
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon"><i class="ri-mic-2-line"></i></div>
-        <div class="why-title" data-kr="공공기관 나레이션 & 사회자" data-en="Narration & Hosting" data-cn="公共机构旁白 & 主持">공공기관 나레이션 & 사회자</div>
+        <div class="why-title" data-kr="쇼호스트의 전달력" data-en="Pro Delivery" data-cn="专业传达力">쇼호스트의 전달력</div>
         <div class="why-desc"
-             data-kr="공공기관 홍보 영상 나레이션, 청년의날 사회자. 정확하고 신뢰감 있는 목소리로 발음과 딕션으로 진행합니다."
-             data-en="Public sector narration & Youth Day host. Trustworthy voice and precise diction."
-             data-cn="公共机构宣传视频旁白及青年节主持人。用准确且值得信赖的声音进行主持。">
-          공공기관 홍보 영상 나레이션, 청년의날 사회자. 정확하고 신뢰감 있는 목소리로 발음과 딕션으로 진행합니다.
+             data-kr="공공기관 홍보 영상 나레이션, 청년의날 사회자.<br>정확하고 신뢰감 있는 목소리로 발음과 딕션으로 진행합니다."
+             data-en="Public sector narration & Youth Day host.<br>Trustworthy voice and precise diction."
+             data-cn="公共机构宣传视频旁白及青年节主持人。<br>用准确且值得信赖的声音进行主持。">
+          공공기관 홍보 영상 나레이션, 청년의날 사회자.<br>정확하고 신뢰감 있는 목소리로 발음과 딕션으로 진행합니다.
         </div>
       </div>
 
@@ -330,10 +346,10 @@
         <div class="why-icon"><i class="ri-customer-service-2-line"></i></div>
         <div class="why-title" data-kr="고객 분석 & 설득 기술" data-en="Customer Psychology" data-cn="顾客分析与说服">고객 분석 & 설득 기술</div>
         <div class="why-desc"
-             data-kr="CS 및 서비스 경영 국가공인 자격 보유. 고객 심리를 파악하고 기분 좋게 설득합니다."
-             data-en="Certified in CS & Service Management. Persuading based on customer psychology."
-             data-cn="持有CS及服务经营国家认证资格。把握顾客心理，愉快说服。">
-          CS 및 서비스 경영 국가공인 자격 보유. 고객 심리를 파악하고 기분 좋게 설득합니다.
+             data-kr="CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다."
+             data-en="Certified in CS & Service Management.<br>Persuading based on customer psychology."
+             data-cn="持有CS及服务经营国家认证资格。<br>把握顾客心理，愉快说服。">
+          CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다.
         </div>
       </div>
     </div>
@@ -360,13 +376,12 @@
           <div class="history-group">
             <h4>🎤 Broadcast & Education</h4>
             <ul class="history-list">
-              <li>전주정보문화산업진흥원(소담스퀘어) 콘텐츠 제작 강사</li>
+              <li>전주정보문화산업진흥원(소담스퀘어) 콘텐츠 제작 보조강사</li>
               <li>청년의 날 해외청년 퀴즈대회 메인 사회자</li>
               <li>대학교 교육방송국 JEBS 아나운서 부장</li>
-              <li>오산시 소상공인 연합회 SNS 홍보단</li>
+              <li>지자체 소상공인 연합회 SNS 홍보단</li>
             </ul>
           </div>
-
           <div class="history-group">
             <h4>🌏 Global & Communication</h4>
             <ul class="history-list">
@@ -375,7 +390,6 @@
               <li>다국어(영어/중국어) 활용 커뮤니케이션 가능</li>
             </ul>
           </div>
-
           <div class="history-group">
             <h4>🤝 Leadership</h4>
             <ul class="history-list">
@@ -384,7 +398,6 @@
               <li>화성시 청소년수련관 대학생 서포터즈</li>
             </ul>
           </div>
-
           <div class="history-group">
             <h4>🏆 Awards & Startup</h4>
             <ul class="history-list">
@@ -424,8 +437,8 @@
                  data-cn="不限品类的消化力。快速掌握产品优点并转化为卖点。">
               카테고리를 가리지 않는 소화력. 제품의 장점을 빠르게 파악해 세일즈 포인트로 연결합니다.
             </div>
-            <div class="work-meta" data-kr="안마의자, 뷰티, 가전 전문" data-en="Massage chair, Beauty, Home appliances" data-cn="按摩椅, 美妆, 家电专业">
-              안마의자, 뷰티, 가전 전문
+            <div class="work-meta" data-kr="안마의자, 뷰티, 가전 진행" data-en="Massage chair, Beauty, Home appliances" data-cn="按摩椅, 美妆, 家电主持">
+              안마의자, 뷰티, 가전 진행
             </div>
           </div>
         </div>
@@ -438,10 +451,10 @@
             </div>
             <div class="work-title" data-kr="전국구 팝업 현장 운영" data-en="Nationwide Popup Sales" data-cn="全国快闪销售运营">전국구 팝업 현장 운영</div>
             <div class="work-text"
-                 data-kr="코엑스·판교·수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원."
-                 data-en="Coex, Pangyo, Suwon locations. All-in-one on-site sales."
-                 data-cn="COEX·板桥·水原等全国活动。从接待到付款的一站式现场服务。">
-              코엑스·판교·수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원.
+                 data-kr="코엑스, 용산, 마포, 판교, 동탄, 수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원."
+                 data-en="Coex, Yongsan, Mapo, Pangyo, Dongtan, Suwon. All-in-one on-site sales."
+                 data-cn="COEX·龙山·麻浦·板桥·东滩·水原等。从接待到付款的一站式现场服务。">
+              코엑스, 용산, 마포, 판교, 동탄, 수원 등 전국구 활동. 고객 응대부터 결제 유도까지 현장 올인원.
             </div>
             <div class="work-meta" data-kr="품목: 유아 화장품 · 장난감" data-en="Items: Baby Cosmetics & Toys" data-cn="品类：幼儿化妆品 · 玩具">
               품목: 유아 화장품 · 장난감
@@ -488,29 +501,30 @@
           </div>
           <div class="video-body">
             <div class="video-title">Vision Talk</div>
-            <div class="video-desc">경기청년 사다리 발대식 스피치. "내가 왜 이 일을 하는지"에 대한 진심.</div>
+            <div class="video-desc">경기청년 사다리 발대식 스피치.<br>"내가 왜 이 일을 하는지"에 대한 진심.</div>
             <a class="video-link" href="#" target="_blank"><i class="ri-play-circle-line"></i> 영상 보기</a>
           </div>
         </div>
 
         <div class="video-card">
-          <div class="video-thumb">
-            <img src="mypicks.jpg" alt="DotoPick" onerror="this.src='https://via.placeholder.com/400x300'">
+          <div class="video-thumb slideshow">
+            <img src="mypicks1.jpg" class="slide-img img-1" onerror="this.src='https://via.placeholder.com/400x300/eee/999?text=Slide1'">
+            <img src="mypicks2.jpg" class="slide-img img-2" onerror="this.src='https://via.placeholder.com/400x300/ddd/888?text=Slide2'">
           </div>
           <div class="video-body">
             <div class="video-title">DotoPick (기획력)</div>
-            <div class="video-desc">직접 제작한 여행 공유 시트와 큐레이션 콘텐츠. 정보 정리의 정석.</div>
+            <div class="video-desc">직접 제작한 여행 공유 시트와 큐레이션 콘텐츠.<br>정보 정리의 정석.</div>
             <a class="video-link" href="https://www.youtube.com/@DotoRin33" target="_blank"><i class="ri-play-circle-line"></i> 채널 보기</a>
           </div>
         </div>
 
         <div class="video-card">
           <div class="video-thumb">
-            <img src="collab_thumb.jpg" alt="Collaboration" onerror="this.src='https://via.placeholder.com/400x300'">
+            <img src="collab_3split.jpg" alt="Brand Collab" onerror="this.src='https://via.placeholder.com/400x300'">
           </div>
           <div class="video-body">
             <div class="video-title">Brand Collab</div>
-            <div class="video-desc">브랜드와 함께 만든 협업 콘텐츠. 자연스러운 제품 녹이기 스킬.</div>
+            <div class="video-desc">브랜드와 함께 만든 협업 콘텐츠.<br>자연스러운 제품 녹이기 스킬.</div>
             <a class="video-link" href="#" target="_blank"><i class="ri-play-circle-line"></i> 영상 보기</a>
           </div>
         </div>
