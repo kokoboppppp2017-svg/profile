@@ -72,6 +72,7 @@
       background:var(--white);padding:22px 16px;border-radius:18px;
       box-shadow:var(--shadow);flex:1;text-align:center;border:1px solid var(--border)
     }
+    /* 모바일 깨짐 방지: 줄바꿈 금지 */
     .stat-num{font-size:26px;font-weight:900;color:var(--accent);margin-bottom:6px;letter-spacing:-.5px; white-space:nowrap;}
     .stat-label{font-size:13px;color:var(--text-gray);font-weight:700;word-break:keep-all}
 
@@ -95,7 +96,7 @@
       background:#eff6ff;width:62px;height:62px;border-radius:18px;
       display:flex;align-items:center;justify-content:center
     }
-    .why-title{font-size:19px;font-weight:900;margin-bottom:10px}
+    .why-title{font-size:19px;font-weight:900;margin-bottom:10px; word-break: keep-all;}
     .why-desc{font-size:15px;color:var(--text-gray);word-break:keep-all; line-height: 1.5;}
 
     /* Tooltip Styles for Badges */
@@ -114,7 +115,7 @@
 
     /* Tooltip text */
     .badge::after {
-      content: attr(data-tooltip); /* HTML의 data-tooltip 내용을 가져옴 */
+      content: attr(data-tooltip);
       position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
       background: var(--primary); color: white; padding: 6px 12px; border-radius: 8px;
       font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s;
@@ -134,7 +135,7 @@
       background: white; border: 2px solid var(--accent); padding: 12px 28px;
       border-radius: 50px; font-weight: 800; cursor: pointer; color: var(--accent);
       display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
-      animation: pulse 2s infinite; /* 시선 집중 효과 */
+      animation: pulse 2s infinite; 
     }
     .toggle-btn:hover { background: var(--accent); color: white; }
     
@@ -230,6 +231,7 @@
       .work-grid{grid-template-columns:1fr}
       .video-grid{grid-template-columns:1fr}
       .contact-wrapper{grid-template-columns:1fr;padding:40px 20px;gap:26px}
+      /* 모바일에서 폰트 사이즈 조정 */
       .stat-num{font-size:20px}
     }
   </style>
@@ -305,23 +307,12 @@
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon"><i class="ri-mic-2-line"></i></div>
-        <div class="why-title" data-kr="쇼호스트의 전달력" data-en="Pro Delivery" data-cn="专业传达力">쇼호스트의 전달력</div>
+        <div class="why-title" data-kr="공공기관 나레이션 & 사회자" data-en="Narration & Hosting" data-cn="公共机构旁白 & 主持">공공기관 나레이션 & 사회자</div>
         <div class="why-desc"
-             data-kr="청년의 날 메인 사회자 및 교내 아나운서 부장 출신.<br>정확한 발음과 딕션으로 정보를 꽂아줍니다."
-             data-en="Main Host for Youth Day & Campus Announcer.<br>Clear diction and delivery."
-             data-cn="青年节主主持人及校内播音部长出身。<br>用准确的发音传达信息。">
-          청년의 날 메인 사회자 및 교내 아나운서 부장 출신.<br>정확한 발음과 딕션으로 정보를 꽂아줍니다.
-        </div>
-      </div>
-
-      <div class="why-card">
-        <div class="why-icon"><i class="ri-customer-service-2-line"></i></div>
-        <div class="why-title" data-kr="고객 분석 & 설득 기술" data-en="Customer Psychology" data-cn="顾客分析与说服">고객 분석 & 설득 기술</div>
-        <div class="why-desc"
-             data-kr="CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다."
-             data-en="Certified in CS & Service Management.<br>Persuading based on customer psychology."
-             data-cn="持有CS及服务经营国家认证资格。<br>把握顾客心理，愉快说服。">
-          CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다.
+             data-kr="공공기관 홍보 영상 나레이션 및 청년의 날 메인 사회자.<br>정확하고 신뢰감 있는 목소리와 딕션으로 진행합니다."
+             data-en="Public sector promo narration & Youth Day Host.<br>Trustworthy voice and precise diction."
+             data-cn="公共机构宣传视频旁白及青年节主主持人。<br>用准确且值得信赖的声音进行主持。">
+          공공기관 홍보 영상 나레이션 및 청년의 날 메인 사회자.<br>정확하고 신뢰감 있는 목소리와 딕션으로 진행합니다.
         </div>
       </div>
 
@@ -333,6 +324,17 @@
              data-en="Smart Store ops & ad production.<br>Covering planning to OA."
              data-cn="网店运营及广告制作。<br>从策划到结算(OA)完美覆盖。">
           스마트스토어 운영 및 제품 광고/협찬 제작.<br>기획부터 정산(OA)까지 실무 완벽 커버.
+        </div>
+      </div>
+
+      <div class="why-card">
+        <div class="why-icon"><i class="ri-customer-service-2-line"></i></div>
+        <div class="why-title" data-kr="고객 분석 & 설득 기술" data-en="Customer Psychology" data-cn="顾客分析与说服">고객 분석 & 설득 기술</div>
+        <div class="why-desc"
+             data-kr="CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다."
+             data-en="Certified in CS & Service Management.<br>Persuading based on customer psychology."
+             data-cn="持有CS及服务经营国家认证资格。<br>把握顾客心理，愉快说服。">
+          CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다.
         </div>
       </div>
     </div>
