@@ -594,15 +594,21 @@
       <div class="work-grid">
         <div class="work-card">
           <div class="work-body">
-            <div class="work-top">
-              <span class="work-cat">Live Commerce</span>
-              <span class="work-badge" 
-                    data-kr="Spectrum" 
-                    data-en="Spectrum" 
-                    data-cn="Spectrum">
-                Spectrum
-              </span>
-            </div>
+          <div class="work-top">
+  <span class="work-cat" 
+        data-kr="라이브 커머스" 
+        data-en="LIVE COMMERCE" 
+        data-cn="直播带货">
+    LIVE COMMERCE
+  </span>
+
+  <span class="work-badge" 
+        data-kr="스펙트럼" 
+        data-en="Spectrum" 
+        data-cn="Spectrum">
+    Spectrum
+  </span>
+</div>
             <div class="work-title" data-kr="라이브 커머스 진행" data-en="Live Commerce Experience" data-cn="直播带货经历">라이브 커머스 진행</div>
             <div class="work-text"
                  data-kr="카테고리를 가리지 않는 소화력. 제품의 장점을 빠르게 파악해 세일즈 포인트로 연결합니다."
@@ -874,6 +880,10 @@
         icon.style.transform = "rotate(180deg)";
       }
     }
+    // [추가] 아이패드/폰에서 터치하면 툴팁 나오게 하기 (강제 클릭 인식)
+    document.querySelectorAll('.badge').forEach(el => {
+      el.setAttribute('onclick', 'void(0)'); 
+    });
   </script>
 </body>
 </html>
