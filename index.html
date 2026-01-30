@@ -185,15 +185,16 @@
     .video-link { font-size: 14px; font-weight: 800; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 5px; }
     .video-link:hover { text-decoration: underline; }
 
-    /* Visual Spectrum (Gallery) */
+    /* Visual Spectrum (Gallery) - 3 Columns for bottom row */
     .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
     .gallery-item { border-radius: 16px; overflow: hidden; position: relative; background: #e2e8f0; aspect-ratio: 3/4; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
     .gallery-item:hover img { transform: scale(1.05); }
+    /* 아랫줄 (캐주얼) 3장 중앙 정렬 스타일 */
     .gallery-row-2 { grid-column: span 4; display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
     .gallery-row-2 .gallery-item { width: 24%; }
 
-    /* Contact */
+    /* Contact (Layout Fix) */
     .contact-wrapper {
       background: var(--white); border-radius: 30px; padding: 60px;
       box-shadow: var(--shadow); border: 1px solid var(--border);
@@ -227,7 +228,7 @@
     .link-left { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 16px; }
     .link-tag { font-size: 12px; color: var(--text-gray); font-weight: 700; }
 
-    /* [NEW] Floating Button (하단 우측 고정 버튼) */
+    /* Floating Button */
     .floating-btn {
       position: fixed; bottom: 30px; right: 30px;
       background: var(--kakao-yellow); color: #3c1e1e;
@@ -239,6 +240,9 @@
       text-decoration: none;
     }
     .floating-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    /* Animations */
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); } }
 
     /* Responsive */
     @media (max-width: 900px) {
@@ -255,8 +259,6 @@
       .gallery-row-2 .gallery-item { width: 100%; }
       .contact-wrapper { grid-template-columns: 1fr; padding: 40px 20px; gap: 26px; }
       .stat-num { font-size: 20px; }
-      
-      /* 모바일에서 플로팅 버튼 위치 조정 (더 작고 구석으로) */
       .floating-btn { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 13px; }
     }
   </style>
@@ -267,12 +269,12 @@
     <div class="container nav-wrap">
       <div class="logo">JANG HYE RIN</div>
       <nav class="nav-menu">
-  <a href="#about" data-kr="소개" data-en="About" data-cn="介绍">About</a>
-  <a href="#results" data-kr="성과" data-en="Results" data-cn="成果">Results</a>
-  <a href="#highlights" data-kr="핵심 영상" data-en="Highlights" data-cn="精彩片段">Highlights</a>
-  <a href="#gallery" data-kr="갤러리" data-en="Gallery" data-cn="照片墙">Gallery</a>
-  <a href="#contact" data-kr="연락" data-en="Contact" data-cn="联系">Contact</a>
-</nav>
+        <a href="#about" data-kr="소개" data-en="About" data-cn="介绍">소개</a>
+        <a href="#results" data-kr="성과" data-en="Results" data-cn="成果">성과</a>
+        <a href="#highlights" data-kr="하이라이트" data-en="Highlights" data-cn="精彩片段">하이라이트</a>
+        <a href="#gallery" data-kr="갤러리" data-en="Gallery" data-cn="照片墙">갤러리</a>
+        <a href="#contact" data-kr="연락처" data-en="Contact" data-cn="联系">연락처</a>
+      </nav>
       <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('kr')">KR</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -300,15 +302,15 @@
 
       <div class="stats-row">
         <div class="stat-box">
-          <div class="stat-num">56.7만+</div>
+          <div class="stat-num" data-kr="56.7만+" data-en="567K+" data-cn="56.7万+">56.7만+</div>
           <div class="stat-label" data-kr="유튜브 누적 조회수" data-en="YouTube Cumulative Views" data-cn="YouTube累计播放量">유튜브 누적 조회수</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num" style="color:var(--gold)">1,000만+</div>
+          <div class="stat-num" style="color:var(--gold)" data-kr="1,000만+" data-en="10M+" data-cn="1,000万+">1,000만+</div>
           <div class="stat-label" data-kr="팝업스토어 누적 매출" data-en="Total Popup Sales" data-cn="快闪累计销售额">팝업스토어 누적 매출</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num">All-in-One</div>
+          <div class="stat-num" data-kr="All-in-One" data-en="All-in-One" data-cn="All-in-One">All-in-One</div>
           <div class="stat-label" data-kr="기획·진행·콘텐츠 한 번에" data-en="Plan · Host · Create" data-cn="策划·主持·内容">기획·진행·콘텐츠 한 번에</div>
         </div>
       </div>
@@ -322,13 +324,13 @@
 
   <section class="container" style="padding-bottom: 40px;">
     <div class="text-center" style="margin-bottom: 32px;">
-     <h2 style="font-size:32px; font-weight:900;" data-kr="검증된 역량" data-en="Proven Strengths" data-cn="经验证的实力">검증된 역량</h2>
-<p style="color:var(--text-gray); font-weight:600;"
-   data-kr="쇼호스트로서의 전달력과, 성과로 증명된 설득력을 갖추고 있습니다."
-   data-en="Strong on-camera delivery and persuasion proven by results."
-   data-cn="具备专业表达力，并以成果证明说服力。">
-  쇼호스트로서의 전달력과, 성과로 증명된 설득력을 갖추고 있습니다.
-</p>
+      <h2 style="font-size:32px; font-weight:900;" data-kr="검증된 역량" data-en="Proven Strengths" data-cn="经验证的实力">검증된 역량</h2>
+      <p style="color:var(--text-gray); font-weight:600;"
+         data-kr="쇼호스트로서의 전달력과, 성과로 증명된 설득력을 갖추고 있습니다."
+         data-en="Strong on-camera delivery and persuasion proven by results."
+         data-cn="具备专业表达力，并以成果证明说服力。">
+        쇼호스트로서의 전달력과, 성과로 증명된 설득력을 갖추고 있습니다.
+      </p>
     </div>
 
     <div class="why-grid">
@@ -336,33 +338,33 @@
         <div class="why-icon"><i class="ri-mic-2-line"></i></div>
         <div class="why-title" data-kr="쇼호스트의 전달력" data-en="Pro Delivery" data-cn="专业传达力">쇼호스트의 전달력</div>
         <div class="why-desc"
-     data-kr="공공기관 홍보 영상 나레이션, 청년의 날 메인 사회 경험.<br>정확한 발음과 안정적인 딕션으로 신뢰감을 만들어냅니다."
-     data-en="Narration for public campaigns and main MC experience. Clear diction and a confident, trustworthy tone."
-     data-cn="公共宣传旁白与大型活动主持经验。发音清晰、节奏稳定，传递信赖感。">
-  공공기관 홍보 영상 나레이션, 청년의날 사회자.<br>정확하고 신뢰감 있는 목소리로 발음과 딕션으로 진행합니다.
-</div>
+             data-kr="공공기관 홍보 영상 나레이션, 청년의 날 메인 사회 경험.<br>정확한 발음과 안정적인 딕션으로 신뢰감을 만들어냅니다."
+             data-en="Narration for public campaigns and main MC experience. Clear diction and a confident, trustworthy tone."
+             data-cn="公共宣传旁白与大型活动主持经验。发音清晰、节奏稳定，传递信赖感。">
+          공공기관 홍보 영상 나레이션, 청년의 날 메인 사회 경험.<br>정확한 발음과 안정적인 딕션으로 신뢰감을 만들어냅니다.
+        </div>
       </div>
 
       <div class="why-card">
         <div class="why-icon"><i class="ri-store-3-line"></i></div>
         <div class="why-title" data-kr="기획·제작 올라운더" data-en="Content & Shop Planning" data-cn="策划·制作全能">기획·제작 올라운더</div>
         <div class="why-desc"
-     data-kr="스마트스토어 운영 및 광고/협찬 콘텐츠 제작 경험.<br>기획부터 운영, 정산까지 실무를 한 번에 커버합니다."
-     data-en="Smart Store operations and sponsored content production. From planning to operations and settlement—end to end."
-     data-cn="网店运营与广告/合作内容制作经验。从策划到运营与结算，全流程覆盖。">
-  스마트스토어 운영 및 제품 광고/협찬 제작.<br>기획부터 정산(OA)까지 실무 완벽 커버.
-</div>
+             data-kr="스마트스토어 운영 및 광고/협찬 콘텐츠 제작 경험.<br>기획부터 운영, 정산까지 실무를 한 번에 커버합니다."
+             data-en="Smart Store operations and sponsored content production. From planning to operations and settlement—end to end."
+             data-cn="网店运营与广告/合作内容制作经验。从策划到运营与结算，全流程覆盖。">
+          스마트스토어 운영 및 광고/협찬 콘텐츠 제작 경험.<br>기획부터 운영, 정산까지 실무를 한 번에 커버합니다.
+        </div>
       </div>
 
       <div class="why-card">
         <div class="why-icon"><i class="ri-customer-service-2-line"></i></div>
         <div class="why-title" data-kr="고객 분석 & 설득 기술" data-en="Customer Psychology" data-cn="顾客分析与说服">고객 분석 & 설득 기술</div>
-       <div class="why-desc"
-     data-kr="CS 및 서비스경영 국가공인 자격 보유.<br>고객의 고민 지점을 빠르게 파악해, 부담 없이 설득합니다."
-     data-en="Certified in CS & Service Management. I identify hesitation points fast and guide decisions smoothly."
-     data-cn="持有CS与服务经营国家认证资格。快速抓住顾客顾虑点，自然引导成交。">
-  CS 및 서비스 경영 국가공인 자격 보유.<br>고객 심리를 파악하고 기분 좋게 설득합니다.
-</div>
+        <div class="why-desc"
+             data-kr="CS 및 서비스경영 국가공인 자격 보유.<br>고객의 고민 지점을 빠르게 파악해, 부담 없이 설득합니다."
+             data-en="Certified in CS & Service Management. I identify hesitation points fast and guide decisions smoothly."
+             data-cn="持有CS与服务经营国家认证资格。快速抓住顾客顾虑点，自然引导成交。">
+          CS 및 서비스경영 국가공인 자격 보유.<br>고객의 고민 지점을 빠르게 파악해, 부담 없이 설득합니다.
+        </div>
       </div>
     </div>
 
@@ -379,9 +381,10 @@
     </div>
 
     <div class="history-toggle-area">
-    <button class="toggle-btn" onclick="toggleHistory()" data-kr="경력 & 수상 더 보기 <i class='ri-arrow-down-s-line' id='toggleIcon'></i>" data-en="More History & Awards <i class='ri-arrow-down-s-line' id='toggleIcon'></i>" data-cn="查看更多经历与奖项 <i class='ri-arrow-down-s-line' id='toggleIcon'></i>">
-  경력 & 수상 더 보기 <i class="ri-arrow-down-s-line" id="toggleIcon"></i>
-</button>
+      <button class="toggle-btn" onclick="toggleHistory()" data-kr="경력 & 수상 더 보기 <i class='ri-arrow-down-s-line' id='toggleIcon'></i>" data-en="More History & Awards <i class='ri-arrow-down-s-line' id='toggleIcon'></i>" data-cn="查看更多经历与奖项 <i class='ri-arrow-down-s-line' id='toggleIcon'></i>">
+        경력 & 수상 더 보기 <i class="ri-arrow-down-s-line" id="toggleIcon"></i>
+      </button>
+
       <div class="history-content" id="historyContent">
         <div class="history-inner">
           <div class="history-group">
@@ -497,12 +500,12 @@
     <div class="container">
       <div class="text-center">
         <h2 style="font-size:34px; font-weight:900;" data-kr="핵심 영상" data-en="Highlights" data-cn="精彩片段">핵심 영상</h2>
-<p style="color:var(--text-gray); margin-top:10px; font-weight:600;"
-   data-kr="저의 가치관, 기획력, 협업 역량을 영상으로 확인하실 수 있습니다."
-   data-en="A quick look at my values, planning ability, and collaboration skills."
-   data-cn="通过视频快速了解我的价值观、策划能力与合作实力。">
-  저의 가치관, 기획력, 협업 역량을 영상으로 확인하실 수 있습니다.
-</p>
+        <p style="color:var(--text-gray); margin-top:10px; font-weight:600;"
+           data-kr="저의 가치관, 기획력, 협업 역량을 영상으로 확인하실 수 있습니다."
+           data-en="A quick look at my values, planning ability, and collaboration skills."
+           data-cn="通过视频快速了解我的价值观、策划能力与合作实力。">
+          저의 가치관, 기획력, 협업 역량을 영상으로 확인하실 수 있습니다.
+        </p>
       </div>
 
       <div class="video-grid">
@@ -511,17 +514,17 @@
             <img src="vision_talk.jpg" alt="Vision Talk" onerror="this.src='https://via.placeholder.com/400x300'">
           </div>
           <div class="video-body">
-<div class="video-title" data-kr="비전 스피치" data-en="Vision Talk" data-cn="愿景演讲">비전 스피치</div>
-<div class="video-desc"
-     data-kr="경기청년사다리 발대식 스피치.<br>“왜 이 일을 하는가”에 대한 진심을 담았습니다."
-     data-en="A speech at the Gyeonggi Youth Ladder kickoff.<br>My honest reason for doing what I do."
-     data-cn="在“京畿青年阶梯”启动仪式上的演讲。<br>讲述我为何选择这条路的真心。">
-  경기청년 사다리 발대식 스피치.<br>"내가 왜 이 일을 하는지"에 대한 진심.
-</div>
-<a class="video-link" href="#" target="_blank">
-  <i class="ri-play-circle-line"></i>
-  <span data-kr="영상 보기" data-en="Watch" data-cn="观看视频">영상 보기</span>
-</a>
+            <div class="video-title" data-kr="비전 스피치" data-en="Vision Talk" data-cn="愿景演讲">비전 스피치</div>
+            <div class="video-desc"
+                 data-kr="경기청년사다리 발대식 스피치.<br>“왜 이 일을 하는가”에 대한 진심을 담았습니다."
+                 data-en="A speech at the Gyeonggi Youth Ladder kickoff.<br>My honest reason for doing what I do."
+                 data-cn="在“京畿青年阶梯”启动仪式上的演讲。<br>讲述我为何选择这条路的真心。">
+              경기청년사다리 발대식 스피치.<br>“왜 이 일을 하는가”에 대한 진심을 담았습니다.
+            </div>
+            <a class="video-link" href="#" target="_blank">
+              <i class="ri-play-circle-line"></i>
+              <span data-kr="영상 보기" data-en="Watch" data-cn="观看视频">영상 보기</span>
+            </a>
           </div>
         </div>
 
@@ -532,16 +535,17 @@
           </div>
           <div class="video-body">
             <div class="video-title" data-kr="도토픽 (기획 · 큐레이션)" data-en="DotoPick (Planning & Curation)" data-cn="DotoPick（策划与整理）">도토픽 (기획 · 큐레이션)</div>
-<div class="video-desc"
-     data-kr="직접 제작한 여행 공유 시트와 큐레이션 콘텐츠.<br>정보를 ‘보기 좋게’ 정리해 전달합니다."
-     data-en="My curated travel sheets and content.<br>I organize information into something people can act on."
-     data-cn="我制作的旅行资料表与精选内容。<br>把信息整理得清晰易用，便于行动。">
-  직접 제작한 여행 공유 시트와 큐레이션 콘텐츠.<br>정보 정리의 정석.
-</div>
-<a class="video-link" href="https://www.youtube.com/@DotoRin33" target="_blank">
-  <i class="ri-play-circle-line"></i>
-  <span data-kr="채널 보기" data-en="Visit Channel" data-cn="查看频道">채널 보기</span>
-</a>
+            <div class="video-desc"
+                 data-kr="직접 제작한 여행 공유 시트와 큐레이션 콘텐츠.<br>정보를 ‘보기 좋게’ 정리해 전달합니다."
+                 data-en="My curated travel sheets and content.<br>I organize information into something people can act on."
+                 data-cn="我制作的旅行资料表与精选内容。<br>把信息整理得清晰易用，便于行动。">
+              직접 제작한 여행 공유 시트와 큐레이션 콘텐츠.<br>정보를 ‘보기 좋게’ 정리해 전달합니다.
+            </div>
+            <a class="video-link" href="https://www.youtube.com/@DotoRin33" target="_blank">
+              <i class="ri-play-circle-line"></i>
+              <span data-kr="채널 보기" data-en="Visit Channel" data-cn="查看频道">채널 보기</span>
+            </a>
+          </div>
         </div>
 
         <div class="video-card">
@@ -550,16 +554,16 @@
           </div>
           <div class="video-body">
             <div class="video-title" data-kr="브랜드 협업" data-en="Brand Collab" data-cn="品牌合作">브랜드 협업</div>
-<div class="video-desc"
-     data-kr="브랜드와 함께 만든 협업 콘텐츠.<br>제품을 억지로 ‘광고’하지 않고 자연스럽게 녹여냅니다."
-     data-en="Collaboration content created with brands.<br>Seamless integration—without feeling like an ad."
-     data-cn="与品牌共同打造的合作内容。<br>自然融入产品，不做生硬广告。">
-  브랜드와 함께 만든 협업 콘텐츠.<br>자연스러운 제품 녹이기 스킬.
-</div>
-<a class="video-link" href="#" target="_blank">
-  <i class="ri-play-circle-line"></i>
-  <span data-kr="영상 보기" data-en="Watch" data-cn="观看视频">영상 보기</span>
-</a>
+            <div class="video-desc"
+                 data-kr="브랜드와 함께 만든 협업 콘텐츠.<br>제품을 억지로 ‘광고’하지 않고 자연스럽게 녹여냅니다."
+                 data-en="Collaboration content created with brands.<br>Seamless integration—without feeling like an ad."
+                 data-cn="与品牌共同打造的合作内容。<br>自然融入产品，不做生硬广告。">
+              브랜드와 함께 만든 협업 콘텐츠.<br>제품을 억지로 ‘광고’하지 않고 자연스럽게 녹여냅니다.
+            </div>
+            <a class="video-link" href="#" target="_blank">
+              <i class="ri-play-circle-line"></i>
+              <span data-kr="영상 보기" data-en="Watch" data-cn="观看视频">영상 보기</span>
+            </a>
           </div>
         </div>
       </div>
@@ -570,12 +574,12 @@
     <div class="container">
       <div class="text-center" style="margin-bottom: 30px;">
         <h2 style="font-size:34px; font-weight:900;" data-kr="비주얼 스펙트럼" data-en="Visual Spectrum" data-cn="风格光谱">비주얼 스펙트럼</h2>
-<p style="color:var(--text-gray); margin-top:10px; font-weight:600;"
-   data-kr="브랜드의 무드에 맞춰 분위기를 바꾸는 소화력"
-   data-en="Versatility that adapts to your brand’s mood"
-   data-cn="可根据品牌氛围灵活切换的表现力">
-  브랜드의 무드에 맞춰 분위기를 바꾸는 소화력
-</p>
+        <p style="color:var(--text-gray); margin-top:10px; font-weight:600;"
+           data-kr="브랜드의 무드에 맞춰 분위기를 바꾸는 소화력"
+           data-en="Versatility that adapts to your brand’s mood"
+           data-cn="可根据品牌氛围灵活切换的表现力">
+          브랜드의 무드에 맞춰 분위기를 바꾸는 소화력
+        </p>
       </div>
       
       <div class="gallery-grid">
@@ -606,13 +610,15 @@
       </div>
 
       <div class="contact-wrapper">
-        <div class="contact-title" data-kr="오픈카톡이 가장 빠릅니다" data-en="Open KakaoTalk is the fastest" data-cn="Open KakaoTalk 联系最快">오픈카톡이 가장 빠릅니다</div>
-<div class="contact-desc"
-     data-kr="일정 / 예산 / 목적만 간단히 남겨주세요."
-     data-en="Just leave your schedule, budget, and purpose."
-     data-cn="请简单留下日程、预算与需求。">
-  일정 / 예산 / 목적만 간단히 남겨주세요.
-</div>
+        <div class="contact-left">
+          <div class="contact-title" data-kr="오픈카톡이 가장 빠릅니다" data-en="Open KakaoTalk is the fastest" data-cn="Open KakaoTalk 联系最快">오픈카톡이 가장 빠릅니다</div>
+          <div class="contact-desc"
+               data-kr="일정 / 예산 / 목적만 간단히 남겨주세요."
+               data-en="Just leave your schedule, budget, and purpose."
+               data-cn="请简单留下日程、预算与需求。">
+            일정 / 예산 / 목적만 간단히 남겨주세요.
+          </div>
+
           <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="btn-kakao">
             <i class="ri-kakao-talk-fill"></i> <span data-kr="장혜린에게 문의하기" data-en="Contact" data-cn="联系我">장혜린에게 문의하기</span>
           </a>
@@ -658,22 +664,20 @@
   </section>
 
   <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="floating-btn">
-    <i class="ri-chat-3-fill"></i> 문의하기
+    <i class="ri-chat-3-fill"></i> <span data-kr="문의하기" data-en="Contact" data-cn="咨询">문의하기</span>
   </a>
 
   <script>
-    // 언어 변경
     function setLang(lang){
       document.querySelectorAll('.lang-btn').forEach(btn=>{
         btn.classList.remove('active');
         if(btn.innerText.toLowerCase()===lang) btn.classList.add('active');
       });
-      document.querySelectorAll(`[data-${lang}]`).forEach(el=>{
-        el.innerHTML = el.getAttribute(`data-${lang}`);
+      document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+        el.innerHTML = el.getAttribute('data-'+lang);
       });
     }
 
-    // 토글 기능
     function toggleHistory() {
       const content = document.getElementById('historyContent');
       const icon = document.getElementById('toggleIcon');
