@@ -389,19 +389,24 @@
         </div>
       </div>
     </div>
-
-    <div class="license-box">
+   <div class="license-box">
       <div class="license-title" data-kr="자격 사항" data-en="LICENSE & CERTIFICATION" data-cn="执照与证书">
         자격 사항
       </div>
       
-      <p style="font-size:12px; color:#94a3b8; margin-bottom:15px;">
+      <p style="font-size:12px; color:#94a3b8; margin-bottom:15px;"
+         data-kr="( <i class='ri-information-line'></i> 배지에 마우스를 올리면 상세 내용을 볼 수 있어요 )"
+         data-en="( <i class='ri-information-line'></i> Hover over the badge for details )"
+         data-cn="( <i class='ri-information-line'></i> 将鼠标悬停在徽章上查看详情 )">
         ( <i class="ri-information-line"></i> 배지에 마우스를 올리면 상세 내용을 볼 수 있어요 )
       </p>
 
       <div class="badges">
         <span class="badge" 
               data-tooltip="롯데손해보험 상품을 상담·판매하는 손해보험 설계사 자격"
+              data-tooltip-kr="롯데손해보험 상품을 상담·판매하는 손해보험 설계사 자격"
+              data-tooltip-en="Certified Non-Life Insurance Agent (Lotte Insurance)"
+              data-tooltip-cn="乐天损害保险产品咨询及销售资格"
               data-kr="<i class='ri-award-fill'></i> 롯데 손해보험 설계사" 
               data-en="<i class='ri-award-fill'></i> Lotte Insurance Agent" 
               data-cn="<i class='ri-award-fill'></i> 乐天损害保险 设计师">
@@ -410,6 +415,9 @@
         
         <span class="badge" 
               data-tooltip="고객 만족 서비스 기획·실무 (국가공인)"
+              data-tooltip-kr="고객 만족 서비스 기획·실무 (국가공인)"
+              data-tooltip-en="Customer Satisfaction Service Planning (Nat'l Cert)"
+              data-tooltip-cn="客户满意服务企划与实务 (国家公认)"
               data-kr="<i class='ri-award-fill'></i> CS Leaders 관리사" 
               data-en="<i class='ri-award-fill'></i> CS Leaders Manager" 
               data-cn="<i class='ri-award-fill'></i> CS Leaders 管理师">
@@ -418,6 +426,9 @@
         
         <span class="badge" 
               data-tooltip="서비스 기획·운영·컨설팅 (국가공인)"
+              data-tooltip-kr="서비스 기획·운영·컨설팅 (국가공인)"
+              data-tooltip-en="Service Management: Planning & Consulting (Nat'l Cert)"
+              data-tooltip-cn="服务企划、运营、咨询 (国家公认)"
               data-kr="<i class='ri-award-fill'></i> SMAT 1급" 
               data-en="<i class='ri-award-fill'></i> SMAT Grade 1" 
               data-cn="<i class='ri-award-fill'></i> SMAT 1级">
@@ -426,6 +437,9 @@
         
         <span class="badge" 
               data-tooltip="워드·엑셀·PPT 통합 활용 능력 (실무 자격)"
+              data-tooltip-kr="워드·엑셀·PPT 통합 활용 능력 (실무 자격)"
+              data-tooltip-en="MS Office Master (Word, Excel, PPT)"
+              data-tooltip-cn="MS Office 综合应用能力 (实务资格)"
               data-kr="<i class='ri-award-fill'></i> OA 마스터" 
               data-en="<i class='ri-award-fill'></i> OA Master" 
               data-cn="<i class='ri-award-fill'></i> OA 大师">
@@ -434,6 +448,9 @@
         
         <span class="badge" 
               data-tooltip="엑셀 데이터 처리 능력 (국가기술자격)"
+              data-tooltip-kr="엑셀 데이터 처리 능력 (국가기술자격)"
+              data-tooltip-en="Excel Data Processing Ability (Nat'l Tech Cert)"
+              data-tooltip-cn="Excel 数据处理能力 (国家技术资格)"
               data-kr="<i class='ri-award-fill'></i> 컴활 2급" 
               data-en="<i class='ri-award-fill'></i> Computer Literacy Gr.2" 
               data-cn="<i class='ri-award-fill'></i> 计算机能力 2级">
@@ -442,6 +459,9 @@
         
         <span class="badge" 
               data-tooltip="국제 커피 추출 바리스타 실무 자격"
+              data-tooltip-kr="국제 커피 추출 바리스타 실무 자격"
+              data-tooltip-en="SCA International Barista Skills Qualification"
+              data-tooltip-cn="SCA 国际咖啡师实务资格"
               data-kr="<i class='ri-cup-fill'></i> SCA 국제 바리스타" 
               data-en="<i class='ri-cup-fill'></i> SCA Int'l Barista" 
               data-cn="<i class='ri-cup-fill'></i> SCA 国际咖啡师">
@@ -802,16 +822,30 @@
   </a>
 
   <script>
+    // 언어 변경 기능 (툴팁까지 바뀌는 업그레이드 버전)
     function setLang(lang){
+      // 1. 버튼 색상 변경
       document.querySelectorAll('.lang-btn').forEach(btn=>{
         btn.classList.remove('active');
         if(btn.innerText.toLowerCase()===lang) btn.classList.add('active');
       });
-      document.querySelectorAll('[data-'+lang+']').forEach(el=>{
-        el.innerHTML = el.getAttribute('data-'+lang);
+
+      // 2. 텍스트 내용 변경
+      document.querySelectorAll(`[data-${lang}]`).forEach(el=>{
+        el.innerHTML = el.getAttribute(`data-${lang}`);
+      });
+
+      // 3. [중요] 툴팁(자격증 설명) 내용 변경
+      document.querySelectorAll('.badge').forEach(el => {
+        const tooltipText = el.getAttribute(`data-tooltip-${lang}`);
+        // 해당 언어용 툴팁이 있으면 교체, 없으면 기본값 유지
+        if (tooltipText) {
+          el.setAttribute('data-tooltip', tooltipText);
+        }
       });
     }
 
+    // 토글 기능 (경력 더보기)
     function toggleHistory() {
       const content = document.getElementById('historyContent');
       const icon = document.getElementById('toggleIcon');
