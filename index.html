@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   ? <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
 
   <style>
     :root {
-      /* [Color Theme] 신뢰의 네이비 + 세일즈의 블루/옐로우 */
+      /* [Color Theme] */
       --primary: #0f172a;
       --accent: #2563eb;
       --gold: #d97706;
@@ -78,17 +78,15 @@
       background: var(--white); padding: 24px 16px; border-radius: 18px;
       box-shadow: var(--shadow); flex: 1; text-align: center; border: 1px solid #e2e8f0;
     }
-    /* 모바일 깨짐 방지: 줄바꿈 금지 */
     .stat-num { font-size: 26px; font-weight: 900; color: var(--accent); margin-bottom: 6px; letter-spacing: -0.5px; white-space: nowrap; }
     .stat-label { font-size: 13px; color: var(--text-gray); font-weight: 700; word-break: keep-all; }
 
-    /* Hero Image Slideshow */
+    /* Hero Slideshow */
     .hero-img-box { flex: 1; position: relative; aspect-ratio: 3/4; border-radius: 30px; box-shadow: 30px 30px 0 #eff6ff; overflow: hidden; }
     .hero-slideshow img {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
       opacity: 0; transition: opacity 1s ease-in-out;
     }
-    /* 상단 슬라이드 애니메이션 (2장 기준) */
     .hero-slideshow .h-slide-1 { animation: fadeEffect1 6s infinite; }
     .hero-slideshow .h-slide-2 { animation: fadeEffect2 6s infinite; }
 
@@ -110,7 +108,7 @@
     .why-title { font-size: 20px; font-weight: 800; margin-bottom: 12px; word-break: keep-all; }
     .why-desc { font-size: 15px; color: var(--text-gray); line-height: 1.6; }
 
-    /* License Badges (Tooltip) */
+    /* License Badges */
     .license-box { margin-top: 40px; text-align: center; }
     .license-title { font-size: 14px; font-weight: 800; color: var(--text-gray); margin-bottom: 12px; letter-spacing: 1px; }
     .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -162,7 +160,7 @@
     .work-cat { font-size: 12px; font-weight: 900; color: var(--accent); letter-spacing: 0.8px; text-transform: uppercase; }
     .work-badge { font-size: 12px; font-weight: 900; background: var(--gold); color: #fff; padding: 4px 8px; border-radius: 6px; }
     .work-title { font-size: 20px; font-weight: 900; margin-bottom: 10px; line-height: 1.3; word-break: keep-all; }
-    .work-text { font-size: 15px; color: var(--text-gray); font-weight: 500; margin-bottom: 15px; line-height: 1.6; }
+    .work-text { font-size: 15px; color: var(--text-gray); font-weight: 500; margin-bottom: 15px; line-height: 1.6; word-break: keep-all; }
     .work-meta { font-size: 13px; color: #64748b; font-weight: 700; background: #f8fafc; padding: 10px; border-radius: 8px; }
 
     /* Highlights (Video) */
@@ -173,34 +171,27 @@
     .video-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
     .video-thumb { height: 160px; background: #e2e8f0; overflow: hidden; position: relative; }
     .video-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
-    /* 슬라이드쇼 애니메이션 (기획력 카드용) */
+    /* Slideshow Logic */
     .slideshow .slide-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
     @keyframes fadeEffect1 { 0% { opacity: 1; } 45% { opacity: 1; } 55% { opacity: 0; } 90% { opacity: 0; } 100% { opacity: 1; } }
     @keyframes fadeEffect2 { 0% { opacity: 0; } 45% { opacity: 0; } 55% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; } }
     .slideshow .img-1 { animation: fadeEffect1 6s infinite; }
     .slideshow .img-2 { animation: fadeEffect2 6s infinite; }
     
+    .video-card:hover .video-thumb img { transform: scale(1.05); }
     .video-body { padding: 20px; }
     .video-title { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
-    .video-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; }
+    .video-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.5; word-break: keep-all; }
     .video-link { font-size: 14px; font-weight: 800; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 5px; }
     .video-link:hover { text-decoration: underline; }
 
-    /* [NEW] Visual Spectrum (Gallery) */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-      margin-top: 30px;
-    }
-    .gallery-item {
-      border-radius: 16px; overflow: hidden; position: relative; background: #e2e8f0; aspect-ratio: 3/4;
-    }
+    /* Visual Spectrum (Gallery) */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+    .gallery-item { border-radius: 16px; overflow: hidden; position: relative; background: #e2e8f0; aspect-ratio: 3/4; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
     .gallery-item:hover img { transform: scale(1.05); }
-    /* 마지막 줄(캐주얼) 중앙 정렬을 위한 스타일 */
-    .gallery-row-2 {
-      grid-column: span 4; display: flex; gap: 16px; justify-content: center; margin-top: 16px;
-    }
-    .gallery-row-2 .gallery-item { width: 24%; } /* 4칸 중 약 1칸 크기 */
+    .gallery-row-2 { grid-column: span 4; display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
+    .gallery-row-2 .gallery-item { width: 24%; }
 
     /* Contact */
     .contact-wrapper {
@@ -236,8 +227,18 @@
     .link-left { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 16px; }
     .link-tag { font-size: 12px; color: var(--text-gray); font-weight: 700; }
 
-    /* Animations */
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); } }
+    /* [NEW] Floating Button (하단 우측 고정 버튼) */
+    .floating-btn {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--kakao-yellow); color: #3c1e1e;
+      font-weight: 800; font-size: 14px;
+      padding: 12px 20px; border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 8px;
+      z-index: 1000; transition: 0.3s;
+      text-decoration: none;
+    }
+    .floating-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
 
     /* Responsive */
     @media (max-width: 900px) {
@@ -254,6 +255,9 @@
       .gallery-row-2 .gallery-item { width: 100%; }
       .contact-wrapper { grid-template-columns: 1fr; padding: 40px 20px; gap: 26px; }
       .stat-num { font-size: 20px; }
+      
+      /* 모바일에서 플로팅 버튼 위치 조정 (더 작고 구석으로) */
+      .floating-btn { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 13px; }
     }
   </style>
 </head>
@@ -614,7 +618,7 @@
             <div class="link-left">
               <i class="ri-pencil-fill" style="color:#00C73C; font-size:24px;"></i> Blog
             </div>
-            <span class="link-tag" data-kr="리뷰 & 아카이빙" data-en="Reviews" data-cn="评论">리뷰 & 아카이빙</span>
+?            <span class="link-tag" data-kr="리뷰 & 아카이빙" data-en="Reviews" data-cn="评论">리뷰 & 아카이빙</span>
           </a>
         </div>
       </div>
@@ -624,6 +628,10 @@
       </div>
     </div>
   </section>
+
+  <a href="https://open.kakao.com/o/YOUR_LINK" target="_blank" class="floating-btn">
+    <i class="ri-chat-3-fill"></i> 문의하기
+  </a>
 
   <script>
     // 언어 변경
